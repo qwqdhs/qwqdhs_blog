@@ -1,0 +1,4 @@
+baseURL = "https://qwqdhs.com"
+languageCode = "zh-cn"
+title = "红石的个人博客"
+theme = "reimu"
