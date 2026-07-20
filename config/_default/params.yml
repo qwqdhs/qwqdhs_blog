@@ -276,11 +276,11 @@ valine:
   recordIP: true
   highlight: true
   visitor: false
-  serverURLs:
+  serverURLs: 
 
 waline:
-  enable: false
-  serverURL:
+  enable: enable
+  serverURL: "https://qwqdhs-blog-waline.vercel.app"
   locale: {}
   emoji:
     - https://unpkg.com/@waline/emojis@1.2.0/weibo
