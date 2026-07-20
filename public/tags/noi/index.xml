@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>红石的个人博客</title>
-    <link>http://localhost:1313/</link>
+    <title>NOI on 红石的个人博客</title>
+    <link>http://localhost:1313/tags/noi/</link>
     <description>Recent content from 红石的个人博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,70 +15,9 @@
     <lastBuildDate>Mon, 20 Jul 2026 00:00:00 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/noi/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
-    
-    
-
-    <item>
-      <title>这是一篇测试文章</title>
-      <link>http://localhost:1313/posts/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</link>
-      <pubDate>Mon, 20 Jul 2026 00:00:00 &#43;0000</pubDate>
-      <author>qwqdhs@outlook.com (qwq的红石/屿寻sama)</author>
-      <guid>http://localhost:1313/posts/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</guid>
-      <description>
-        <![CDATA[<h1>这是一篇测试文章</h1><p>作者：qwq的红石/屿寻sama（qwqdhs@outlook.com）</p>
-        
-          <p>是的这是一片测试文章，滚木滚木滚木&hellip;</p>
-<p>我要写点什么呢？</p>
-<p>你好你好你好你好你好</p>
-<p>内容内容内容内容</p>
-<p>wow</p>
-<p>ez peasy lemon squeezy</p>
-        
-        <hr><p>本文2026-07-20首发于<a href='http://localhost:1313/'>红石的个人博客</a>，最后修改于2026-07-20</p>]]>
-      </description>
-      
-        <category>无</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>建站踩的第一个坑</title>
-      <link>http://localhost:1313/posts/%E5%BB%BA%E7%AB%99%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%9D%91/</link>
-      <pubDate>Mon, 20 Jul 2026 00:00:00 &#43;0000</pubDate>
-      <author>qwqdhs@outlook.com (qwq的红石/屿寻sama)</author>
-      <guid>http://localhost:1313/posts/%E5%BB%BA%E7%AB%99%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%9D%91/</guid>
-      <description>
-        <![CDATA[<h1>建站踩的第一个坑</h1><p>作者：qwq的红石/屿寻sama（qwqdhs@outlook.com）</p>
-        
-          <h3 id="前情提要">
-<a class="header-anchor" href="#%e5%89%8d%e6%83%85%e6%8f%90%e8%a6%81"></a>
-前情提要
-</h3><p>众所不知，本站是CloudFlare+Hugo+reimu搭建的。</p>
-<h2 id="正文">
-<a class="header-anchor" href="#%e6%ad%a3%e6%96%87"></a>
-正文
-</h2><p>在注册CloudFlare时我遇到了一个非常恶心的问题，邮箱收不到验证码，我重发了好几次直到给我锁了一小时。</p>
-<p>目前已知outlook和hotmail都收不了，网上也没找到能解决的教程，貌似是cloudflare的发信ip被outlook拉黑了。</p>
-<p>我尝试过的方法：</p>
-<p>1.<a href="https://learn.microsoft.com/zh-cn/answers/questions/4550208/outlook-cloudflare">添加安全发件人、创建收件箱规则</a> &ndash;无效</p>
-<p>2.<a href="https://learn.microsoft.com/zh-cn/answers/questions/5542215/outlook">添加安全发件人</a> &ndash;无效</p>
-<p>至于我的解决方法的话，我的解决方法是用gmail邮箱。</p>
-<h2 id="后续">
-<a class="header-anchor" href="#%e5%90%8e%e7%bb%ad"></a>
-后续
-</h2><p>到本篇文章发布时，该问题并未修复。</p>
-        
-        <hr><p>本文2026-07-20首发于<a href='http://localhost:1313/'>红石的个人博客</a>，最后修改于2026-07-20</p>]]>
-      </description>
-      
-        <category>无</category>
-      
-    </item>
     
     
 
