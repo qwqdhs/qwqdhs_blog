@@ -16,7 +16,7 @@ menu:
     url: "friend"
     icon: "f0c0"
 
-mainSections: ["post"]
+mainSections: ["posts"]
 yearFormat: "2006"
 monthFormat: "2006-01"
 dateFormat: "2006-01-02"
@@ -42,7 +42,7 @@ subtitle:
     cursorChar: "|"
     smartBackspace: false
   text: "世界第一公主殿下..."
-  
+
 banner: "images/banner.webp"
 banner_srcset:
   enable: false
@@ -145,7 +145,10 @@ reimu_cursor:
     pointer: ../images/cursor/reimu-cursor-pointer.png
     text: ../images/cursor/reimu-cursor-text.png
 
-icon_font: 4552607_ex15nbittbh
+# ============================================================
+# ========== 关键修复：启用 Font Awesome，关闭自定义图标字体 ==========
+# ============================================================
+icon_font: false   # ← 改为 false，让 Font Awesome 生效
 
 custom_font:
   enable: false
@@ -496,9 +499,8 @@ home_categories:
 injector:
   head_begin:
   head_end: |
-    <!-- ===== 初音未来风格 - 强制覆盖红色为蓝色 + 替换太极 ===== -->
     <style>
-      /* ---------- 1. 整站红色 → 初音蓝 ---------- */
+      /* ---------- 整站红色 → 初音蓝 ---------- */
       :root {
         --red-0: #00bfff !important;
         --red-1: #4fc3f7 !important;
@@ -552,36 +554,6 @@ injector:
         backdrop-filter: blur(6px) !important;
         border-radius: 16px !important;
       }
-
-      /* ---------- 2. 强制替换太极 ---------- */
-      .site-brand .logo-link {
-        display: inline-block !important;
-        width: 34px !important;
-        height: 34px !important;
-        overflow: hidden !important;
-        position: relative !important;
-      }
-
-      .site-brand .logo-link svg,
-      .site-brand .logo-link .taichi {
-        display: none !important;
-      }
-
-      .site-brand .logo-link::after {
-        content: "" !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        background: url('/images/taichi.png') no-repeat center/contain !important;
-        z-index: 10 !important;
-        /* 无旋转，纯静态 */
-      }
-
-      .preloader .taichi {
-        display: none !important;
-      }
     </style>
   body_begin:
   body_end:
@@ -611,27 +583,27 @@ live2d_widgets:
 pace:
   enable: true
 
+# ============================================================
+# ========== 开启音频播放器（底部固定） ==========
+# ============================================================
 player:
   disable_on_mobile: false
   position: before_sidebar
   aplayer:
-    enable: false
+    enable: true
     options:
-      audio: []
-      fixed: true
-      autoplay:
-      loop:
-      order:
-      preload:
-      volume:
-      mutex:
-      listFolded:
-      lrcType:
+      fixed: true          # 固定到底部
+      autoplay: false
+      loop: all
+      order: random
+      volume: 0.7
+      mutex: true
+      listFolded: false
+      lrcType: 3
   meting:
-    enable: false
-    meting_api:
+    enable: true
     options:
-      id: 2265921590
+      id: 2265921590        # 网易云歌单ID（可替换成你自己的）
       server: netease
       type: playlist
       auto:

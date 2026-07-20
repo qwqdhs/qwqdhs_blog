@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 红石的个人博客</title>
-    <link>http://localhost:1313/tags/</link>
+    <title>其他2 on 红石的个人博客</title>
+    <link>http://localhost:1313/tags/%E5%85%B6%E4%BB%962/</link>
     <description>Recent content from 红石的个人博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate></lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/%E5%85%B6%E4%BB%962/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     

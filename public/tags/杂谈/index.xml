@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>红石的个人博客</title>
-    <link>http://localhost:1313/</link>
+    <title>杂谈 on 红石的个人博客</title>
+    <link>http://localhost:1313/tags/%E6%9D%82%E8%B0%88/</link>
     <description>Recent content from 红石的个人博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,27 +15,37 @@
     <lastBuildDate>Mon, 20 Jul 2026 00:00:00 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="http://localhost:1313/tags/%E6%9D%82%E8%B0%88/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
     
 
     <item>
-      <title>这是一篇测试文章</title>
+      <title>这是一片测试文章</title>
       <link>http://localhost:1313/posts/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</link>
       <pubDate>Mon, 20 Jul 2026 00:00:00 &#43;0000</pubDate>
       <author>qwqdhs@outlook.com (qwq的红石/屿寻sama)</author>
       <guid>http://localhost:1313/posts/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</guid>
       <description>
-        <![CDATA[<h1>这是一篇测试文章</h1><p>作者：qwq的红石/屿寻sama（qwqdhs@outlook.com）</p>
+        <![CDATA[<h1>这是一片测试文章</h1><p>作者：qwq的红石/屿寻sama（qwqdhs@outlook.com）</p>
         
           <p>是的这是一片测试文章，滚木滚木滚木&hellip;</p>
-<p>我要写点什么呢？</p>
-<p>你好你好你好你好你好</p>
-<p>内容内容内容内容</p>
-<p>wow</p>
-<p>ez peasy lemon squeezy</p>
+<p>你可以使用 Markdown 语法：</p>
+<ul>
+<li><strong>加粗</strong></li>
+<li><em>斜体</em></li>
+<li><a href="https://example.com">链接</a></li>
+<li><code>代码</code></li>
+<li>图片：<img src="/images/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt=""></li>
+</ul>
+<h2 id="二级标题">
+<a class="header-anchor" href="#%e4%ba%8c%e7%ba%a7%e6%a0%87%e9%a2%98"></a>
+二级标题
+</h2><h3 id="三级标题">
+<a class="header-anchor" href="#%e4%b8%89%e7%ba%a7%e6%a0%87%e9%a2%98"></a>
+三级标题
+</h3>
         
         <hr><p>本文2026-07-20首发于<a href='http://localhost:1313/'>红石的个人博客</a>，最后修改于2026-07-20</p>]]>
       </description>
