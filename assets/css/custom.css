@@ -1,0 +1,60 @@
+/* ====================================
+   初音未来风格 - 全局蓝色配色覆盖
+   ==================================== */
+
+/* 1. 主题主色（把红色/紫色替换为初音蓝） */
+:root {
+    --primary-color: #00bfff !important;        /* 主色调：亮蓝色 */
+    --primary-light: #e0f7fa !important;        /* 浅蓝背景 */
+    --primary-dark: #0099cc !important;         /* 深蓝 */
+    --secondary-color: #4fc3f7 !important;      /* 辅助蓝 */
+    --link-color: #0288d1 !important;           /* 链接蓝 */
+    --link-hover-color: #00e5ff !important;     /* 悬浮青蓝 */
+}
+
+/* 2. 顶部导航栏背景变蓝 */
+.site-header {
+    background: linear-gradient(135deg, #0288d1, #00bcd4) !important;
+    border-bottom: none !important;
+    box-shadow: 0 2px 12px rgba(0, 188, 212, 0.3) !important;
+}
+
+/* 3. 网站标题和菜单文字变白/亮蓝 */
+.site-title a,
+.site-nav a,
+.site-nav .menu-item {
+    color: #ffffff !important;
+}
+.site-nav a:hover {
+    color: #b2ebf2 !important;
+}
+
+/* 4. 文章卡片、按钮、选中状态的蓝色 */
+.card .card-header,
+.post-item:hover,
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* 5. 鼠标悬停时，文章标题变蓝 */
+.post-title a:hover,
+.post-meta a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* 6. 全局浅蓝渐变背景（之前我们写过的） */
+body {
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%) !important;
+    background-attachment: fixed !important;
+}
+
+/* 7. 主体内容半透明磨砂效果（让背景透出来） */
+.main-content,
+.card,
+.post-item {
+    background: rgba(255, 255, 255, 0.78) !important;
+    backdrop-filter: blur(6px) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}

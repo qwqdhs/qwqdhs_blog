@@ -2,3 +2,15 @@ baseURL = "https://qwqdhs.com"
 languageCode = "zh-cn"
 title = "红石的个人博客"
 theme = "reimu"
+
+# 所有自定义参数直接写在这里
+[params]
+  # 自定义 CSS 加载（解决你的问题一）
+  customCSS = ["css/custom.css"]
+  
+  slogan = "世界第一公主殿下" 
+  
+  # 底部/侧边栏作者（原“J-Sketor”和“D-Sketon”）
+  author = "qwq的红石/屿寻sama"  
+
+  avatar = "/images/profile.png"
