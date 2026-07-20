@@ -17,3 +17,10 @@ defaultContentLanguage = "zh-cn"
   home = ["HTML", "RSS"]
   section = ["HTML", "RSS"]
   archives = ["HTML"]
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    lineNos = true
+    style = "github"        # 推荐暗色主题：monokai、dracula、github-dark
+    noClasses = false
