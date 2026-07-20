@@ -10,7 +10,7 @@
 /><title>
   标签 | qwq的红石/屿寻sama
 </title>
-<meta name="description" content="少女祈祷中..."/><script>
+<meta name="description" content="欢迎来到我的博客"/><script>
   window.siteConfig = JSON.parse("{\"anchor\":{\"auto\":{\"enable\":false,\"length\":60},\"explicit\":{\"enable\":false,\"marker\":\"{#anchor-\",\"prefix\":\"anchor-\"}},\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_ex15nbittbh\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
   
 </script>
@@ -36,7 +36,7 @@
   <meta property="og:title" content="标签 | qwq的红石/屿寻sama" />
   <meta
     property="og:description"
-    content="少女祈祷中..."
+    content="欢迎来到我的博客"
   />
   <meta property="og:url" content="http://localhost:1313/tags/" />
   <meta
@@ -68,7 +68,94 @@
     integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
     rel="stylesheet"
     href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
-    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/><!-- ===== 初音未来风格 - 强制覆盖红色为蓝色 + 替换太极 ===== -->
+<style>
+  /* ---------- 1. 整站红色 → 初音蓝 ---------- */
+  :root {
+    --red-0: #00bfff !important;
+    --red-1: #4fc3f7 !important;
+    --red-2: #81d4fa !important;
+    --red-3: #b3e5fc !important;
+    --red-4: #d4edf8 !important;
+    --red-5: #e5f3fa !important;
+    --red-5-5: #f0f8fc !important;
+    --red-6: #f5fafd !important;
+    --color-red-6-shadow: rgba(0, 191, 255, 0.6) !important;
+    --color-red-3-shadow: rgba(0, 191, 255, 0.3) !important;
+    --color-link: #0288d1 !important;
+    --color-link-hover: #00e5ff !important;
+  }
+
+  .site-header {
+    background: linear-gradient(135deg, #0288d1, #00bcd4) !important;
+    border-bottom: none !important;
+    box-shadow: 0 2px 12px rgba(0, 188, 212, 0.3) !important;
+  }
+  .site-title a, .site-nav a, .site-nav .menu-item {
+    color: #ffffff !important;
+  }
+  .site-nav a:hover {
+    color: #b2ebf2 !important;
+  }
+
+  .btn-primary,
+  .tag-cloud .tag-item:hover,
+  .pagination .page-item.active .page-link,
+  .card .card-header {
+    background-color: #00bfff !important;
+    border-color: #00bfff !important;
+    color: #fff !important;
+  }
+  a:hover,
+  .post-title a:hover,
+  .post-meta a:hover {
+    color: #00bfff !important;
+  }
+
+  body {
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+  .main-content,
+  .card,
+  .post-item {
+    background: rgba(255, 255, 255, 0.78) !important;
+    backdrop-filter: blur(6px) !important;
+    border-radius: 16px !important;
+  }
+
+  /* ---------- 2. 强制替换太极 ---------- */
+  .site-brand .logo-link {
+    display: inline-block !important;
+    width: 34px !important;
+    height: 34px !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  .site-brand .logo-link svg,
+  .site-brand .logo-link .taichi {
+    display: none !important;
+  }
+
+  .site-brand .logo-link::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: url('/images/taichi.png') no-repeat center/contain !important;
+    z-index: 10 !important;
+    /* 无旋转，纯静态 */
+  }
+
+  .preloader .taichi {
+    display: none !important;
+  }
+</style>
+</head>
   <body><div id='loader'>
     <div class="loading-left-bg loading-bg"></div>
     <div class="loading-right-bg loading-bg"></div>
@@ -77,7 +164,7 @@
             <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
             <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
-          </svg></div><div class="loading-word">少女祈祷中...</div>
+          </svg></div><div class="loading-word">世界第一公主殿下...</div>
     </div>
   </div>
   </div>
@@ -114,10 +201,10 @@
 </div>
 <div id="heatmap-tooltip"></div><div id="container">
       <div id="wrap"><div id="header-nav">
-  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">首页</span>
-      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">归档</span>
-      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">关于</span>
-      </a><a class="main-nav-link-wrap" href="/friend"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">相关连接</span>
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon '>&#xf015;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon '>&#xf187;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon '>&#xf007;</div><span class="main-nav-link">关于</span>
+      </a><a class="main-nav-link-wrap" href="/friend"><div class='main-nav-icon icon '>&#xf0c0;</div><span class="main-nav-link">相关连接</span>
       </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
   </nav>
   <nav id="sub-nav" aria-label="Secondary navigation"><a id="nav-rss-link" class="nav-icon" href="/tags/index.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a></nav></div>
@@ -135,13 +222,13 @@
       data-aos="fade-up"
     ><div class="sidebar-author">
   <img
-    data-src="/avatar//images/profile.png"
+    data-src="/avatar/avatar.webp"
     data-sizes="auto"
     alt="qwq的红石/屿寻sama"
     class="lazyload"
   />
   <div class="sidebar-author-name">qwq的红石/屿寻sama</div>
-  <div class="sidebar-description">少女祈祷中...</div>
+  <div class="sidebar-description">欢迎来到我的博客</div>
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
@@ -158,30 +245,70 @@
     <div class="sidebar-state-number">0</div>
   </a>
 </div>
-<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+<div class="sidebar-social" ><div class="icon-bilibili sidebar-social-icon">
+        <a
+          href="https://space.bilibili.com/691911446"
+          itemprop="url"
+          target="_blank"
+          aria-label="bilibili"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-email sidebar-social-icon">
+        <a
+          href="qwqdhs@outlook.com"
+          itemprop="url"
+          target="_blank"
+          aria-label="email"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/qwqdhs"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-qq sidebar-social-icon">
+        <a
+          href="2248885109"
+          itemprop="url"
+          target="_blank"
+          aria-label="qq"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-steam sidebar-social-icon">
+        <a
+          href="https://steamcommunity.com/id/qwqdhs/"
+          itemprop="url"
+          target="_blank"
+          aria-label="steam"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
       <a
         class="sidebar-menu-link-dummy"
         href="/"
         aria-label="首页"
-      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+      ></a><div class='sidebar-menu-icon icon '>&#xf015;</div><div class="sidebar-menu-link">首页</div>
     </div><div class="sidebar-menu-link-wrap">
       <a
         class="sidebar-menu-link-dummy"
         href="/archives"
         aria-label="归档"
-      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+      ></a><div class='sidebar-menu-icon icon '>&#xf187;</div><div class="sidebar-menu-link">归档</div>
     </div><div class="sidebar-menu-link-wrap">
       <a
         class="sidebar-menu-link-dummy"
         href="/about"
         aria-label="关于"
-      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+      ></a><div class='sidebar-menu-icon icon '>&#xf007;</div><div class="sidebar-menu-link">关于</div>
     </div><div class="sidebar-menu-link-wrap">
       <a
         class="sidebar-menu-link-dummy"
         href="/friend"
         aria-label="相关连接"
-      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">相关连接</div>
+      ></a><div class='sidebar-menu-icon icon '>&#xf0c0;</div><div class="sidebar-menu-link">相关连接</div>
     </div></div></div>
   </div><div class="sidebar-widget"><div class="widget-wrapper">
     <div
@@ -251,13 +378,13 @@
       </div><nav id="mobile-nav" aria-label="Mobile navigation">
   <div class="sidebar-wrap"><div class="sidebar-author">
   <img
-    data-src="/avatar//images/profile.png"
+    data-src="/avatar/avatar.webp"
     data-sizes="auto"
     alt="qwq的红石/屿寻sama"
     class="lazyload"
   />
   <div class="sidebar-author-name">qwq的红石/屿寻sama</div>
-  <div class="sidebar-description">少女祈祷中...</div>
+  <div class="sidebar-description">欢迎来到我的博客</div>
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
@@ -274,30 +401,70 @@
     <div class="sidebar-state-number">0</div>
   </a>
 </div>
-<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+<div class="sidebar-social" ><div class="icon-bilibili sidebar-social-icon">
+        <a
+          href="https://space.bilibili.com/691911446"
+          itemprop="url"
+          target="_blank"
+          aria-label="bilibili"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-email sidebar-social-icon">
+        <a
+          href="qwqdhs@outlook.com"
+          itemprop="url"
+          target="_blank"
+          aria-label="email"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/qwqdhs"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-qq sidebar-social-icon">
+        <a
+          href="2248885109"
+          itemprop="url"
+          target="_blank"
+          aria-label="qq"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-steam sidebar-social-icon">
+        <a
+          href="https://steamcommunity.com/id/qwqdhs/"
+          itemprop="url"
+          target="_blank"
+          aria-label="steam"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
       <a
         class="sidebar-menu-link-dummy"
         href="/"
         aria-label="首页"
-      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+      ></a><div class='sidebar-menu-icon icon '>&#xf015;</div><div class="sidebar-menu-link">首页</div>
     </div><div class="sidebar-menu-link-wrap">
       <a
         class="sidebar-menu-link-dummy"
         href="/archives"
         aria-label="归档"
-      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+      ></a><div class='sidebar-menu-icon icon '>&#xf187;</div><div class="sidebar-menu-link">归档</div>
     </div><div class="sidebar-menu-link-wrap">
       <a
         class="sidebar-menu-link-dummy"
         href="/about"
         aria-label="关于"
-      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+      ></a><div class='sidebar-menu-icon icon '>&#xf007;</div><div class="sidebar-menu-link">关于</div>
     </div><div class="sidebar-menu-link-wrap">
       <a
         class="sidebar-menu-link-dummy"
         href="/friend"
         aria-label="相关连接"
-      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">相关连接</div>
+      ></a><div class='sidebar-menu-icon icon '>&#xf0c0;</div><div class="sidebar-menu-link">相关连接</div>
     </div></div></div></nav>
 </div><script
     src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"

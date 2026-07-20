@@ -331,6 +331,18 @@ body [data-aos="zoom-in"] {
   content: "\e619";
 }
 
+.icon-bilibili:before {
+  content: "\e603";
+}
+
+.icon-steam:before {
+  content: "\e624";
+}
+
+.icon-email:before {
+  content: "\e63c";
+}
+
 .sidebar-toc-btn:before {
   font-family: "iconfont";
   content: "\e633";
@@ -364,6 +376,11 @@ body [data-aos="zoom-in"] {
 .icon-taichi:before {
   font-family: "iconfont";
   content: "\e62b";
+}
+
+.icon-qq:before {
+  font-family: "iconfont";
+  content: "\e63e";
 }
 
 .icon-image:before {
@@ -3105,6 +3122,34 @@ mjx-container::-webkit-scrollbar {
 
 .sidebar-social-icon:hover {
   transform: scale(1.2);
+}
+
+.icon-email {
+  color: var(--red-2);
+}
+
+.icon-github {
+  color: #191717;
+}
+
+[data-theme="dark"] .icon-github {
+  color: #bc88ff;
+}
+
+.icon-bilibili {
+  color: #00a1d6;
+}
+
+.icon-steam {
+  color: #171a21;
+}
+
+[data-theme="dark"] .icon-steam {
+  color: #bc88ff;
+}
+
+.icon-qq {
+  color: #12b7f5;
 }
 
 .sidebar-menu {
