@@ -58,3 +58,25 @@ body {
     border-radius: 16px !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
+/* ===== 隐藏太极 SVG，换成自定义图片 ===== */
+.site-header .site-brand .taichi {
+    display: none !important;
+}
+
+/* 在太极的位置显示一张背景图片（你放在 static/images/ 里的图） */
+.site-header .site-brand {
+    position: relative;
+    padding-left: 40px !important; /* 给图片留出空间 */
+}
+
+.site-header .site-brand::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: url('/images/taichi.png') no-repeat center/cover;
+    border-radius: 50%;
+}
