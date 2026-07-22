@@ -5,7 +5,7 @@ draft: false
 categories: ["技术"]
 tags: ["杂谈", "建站", "CloudFlare"]
 mainSections: ["posts"] 
-cover: "/images/111.jpeg"   # ← 加上这一行
+cover: "/images/111.jpeg"
 ---
 
 ### 前情提要

@@ -23,10 +23,10 @@
 
     <item>
       <title>这是一篇测试文章</title>
-      <link>http://localhost:1313/posts/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</link>
+      <link>http://localhost:1313/posts/test/</link>
       <pubDate>Mon, 20 Jul 2026 00:00:00 &#43;0000</pubDate>
       <author>qwqdhs@outlook.com (qwq的红石/屿寻sama)</author>
-      <guid>http://localhost:1313/posts/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</guid>
+      <guid>http://localhost:1313/posts/test/</guid>
       <description>
         <![CDATA[<h1>这是一篇测试文章</h1><p>作者：qwq的红石/屿寻sama（qwqdhs@outlook.com）</p>
         
@@ -40,7 +40,7 @@
         <hr><p>本文2026-07-20首发于<a href='http://localhost:1313/'>红石的个人博客</a>，最后修改于2026-07-20</p>]]>
       </description>
       
-        <category>无</category>
+        <category>其他</category>
       
     </item>
     
@@ -48,10 +48,10 @@
 
     <item>
       <title>建站踩的第一个坑</title>
-      <link>http://localhost:1313/posts/%E5%BB%BA%E7%AB%99%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%9D%91/</link>
+      <link>http://localhost:1313/posts/hole/</link>
       <pubDate>Mon, 20 Jul 2026 00:00:00 &#43;0000</pubDate>
       <author>qwqdhs@outlook.com (qwq的红石/屿寻sama)</author>
-      <guid>http://localhost:1313/posts/%E5%BB%BA%E7%AB%99%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%9D%91/</guid>
+      <guid>http://localhost:1313/posts/hole/</guid>
       <description>
         <![CDATA[<h1>建站踩的第一个坑</h1><p>作者：qwq的红石/屿寻sama（qwqdhs@outlook.com）</p>
         
@@ -76,7 +76,7 @@
         <hr><p>本文2026-07-20首发于<a href='http://localhost:1313/'>红石的个人博客</a>，最后修改于2026-07-20</p>]]>
       </description>
       
-        <category>无</category>
+        <category>技术</category>
       
     </item>
     

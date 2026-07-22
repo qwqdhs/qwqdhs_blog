@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>建图 on 红石的个人博客</title>
+    <link>http://localhost:1313/tags/%E5%BB%BA%E5%9B%BE/</link>
+    <description>Recent content from 红石的个人博客</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>qwqdhs@outlook.com (qwq的红石/屿寻sama)</managingEditor>
+    <webMaster>qwqdhs@outlook.com (qwq的红石/屿寻sama)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Tue, 21 Jul 2026 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/tags/%E5%BB%BA%E5%9B%BE/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>Cartographer建图与nav2导航启动命令流程</title>
+      <link>http://localhost:1313/posts/sdam/</link>
+      <pubDate>Tue, 21 Jul 2026 00:00:00 &#43;0000</pubDate>
+      <author>qwqdhs@outlook.com (qwq的红石/屿寻sama)</author>
+      <guid>http://localhost:1313/posts/sdam/</guid>
+      <description>
+        <![CDATA[<h1>Cartographer建图与nav2导航启动命令流程</h1><p>作者：qwq的红石/屿寻sama（qwqdhs@outlook.com）</p>
+        
+          <h1 id="命令">
+<a class="header-anchor" href="#%e5%91%bd%e4%bb%a4"></a>
+命令
+</h1><p>1.cd /home/ysc/Desktop/rader</p>
+<p>2../LiaderLauch.sh</p>
+<p>2../ImuLauch.sh</p>
+<p>3.ros2 run robot_state_publisher robot_state_publisher ~/robot.urdf</p>
+<p>4.ros2 run cartographer_ros cartographer_node <br>
+-configuration_directory ~/cartographer_config \
+-configuration_basename imu_as_tracking.lua <br>
+&ndash;ros-args -r scan:=/scan -r imu:=/imu/data_raw</p>
+<p>6.ros2 run cartographer_ros occupancy_grid_node -resolution 0.05</p>
+<p>7.rviz2</p>
+<p>8.ros2 run nav2_map_server map_saver_cli -f ~/my_new_map</p>
+<p>9.ros2 launch nav2_bringup navigation_launch.py map:=/path/to/your_map.yaml use_sim_time:=False</p>
+<p>10.ros2 launch rosbridge_server rosbridge_websocket_launch.xml</p>
+<h2 id="命令作用与说明">
+<a class="header-anchor" href="#%e5%91%bd%e4%bb%a4%e4%bd%9c%e7%94%a8%e4%b8%8e%e8%af%b4%e6%98%8e"></a>
+命令作用与说明
+</h2><table>
+	<thead>
+			<tr>
+					<th>命令</th>
+					<th>作用</th>
+					<th>备注</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>cd /home/ysc/Desktop/rader</td>
+					<td>切路径</td>
+					<td>没什么好说的</td>
+			</tr>
+			<tr>
+					<td>./LiaderLauch.sh</td>
+					<td>启动雷达</td>
+					<td>启动雷达驱动的脚本</td>
+			</tr>
+			<tr>
+					<td>./ImuLauch.sh</td>
+					<td>启动IMU</td>
+					<td>启动IMU驱动的脚本</td>
+			</tr>
+			<tr>
+					<td>ros2 run robot_state_publisher robot_state_publisher ~/robot.urdf</td>
+					<td>修正雷达朝向以统一建图与导航坐标系</td>
+					<td>通过解析 URDF 模型，将各连杆间的固定关节刚性变换以 tf2_msgs/TFMessage 形式持续广播至 /tf_static 话题，为Cartographer与Nav2栈提供传感器相对于 base_link 的精准外参声明，从而从 TF 树层面统一建图与导航的位姿基准</td>
+			</tr>
+			<tr>
+					<td>ros2 run cartographer_ros cartographer_node （后面省略）</td>
+					<td>启动Cartographer建图节点</td>
+					<td>启动建图</td>
+			</tr>
+			<tr>
+					<td>ros2 run cartographer_ros occupancy_grid_node -resolution 0.05</td>
+					<td>数据转换</td>
+					<td>将 Cartographer 的实时建图数据转换为 0.05 米分辨率的栅格地图，用于 RViz 可视化及 Nav2 路径规划。</td>
+			</tr>
+			<tr>
+					<td>rviz2</td>
+					<td>可视化</td>
+					<td>无</td>
+			</tr>
+			<tr>
+					<td>ros2 run nav2_map_server map_saver_cli -f ~/my_new_map</td>
+					<td>保存地图</td>
+					<td>将建图完成后的内容保存</td>
+			</tr>
+			<tr>
+					<td>ros2 launch nav2_bringup navigation_launch.py map:=/path/to/your_map.yaml use_sim_time:=False</td>
+					<td>加载地图，并启动Nav2的导航栈</td>
+					<td>其中 use_sim_time:=False 表示使用硬件真实时间（实车模式）</td>
+			</tr>
+			<tr>
+					<td>ros2 launch rosbridge_server rosbridge_websocket_launch.xml</td>
+					<td>启动 ROS2 WebSocket 通信服务</td>
+					<td>在软件上进行控制</td>
+			</tr>
+	</tbody>
+</table>
+<h1 id="文件路径以及文件说明">
+<a class="header-anchor" href="#%e6%96%87%e4%bb%b6%e8%b7%af%e5%be%84%e4%bb%a5%e5%8f%8a%e6%96%87%e4%bb%b6%e8%af%b4%e6%98%8e"></a>
+文件路径以及文件说明
+</h1><h3 id="homeyscdesktoprader">
+<a class="header-anchor" href="#homeyscdesktoprader"></a>
+/home/ysc/Desktop/rader:
+</h3><ul>
+<li><strong>kill.sh</strong>  –杀掉所有建图/路径规划进程</li>
+<li><strong>ImuLauch.sh</strong></li>
+<li><strong>LidarLauch.sh</strong></li>
+</ul>
+<h3 id="home">
+<a class="header-anchor" href="#home"></a>
+/home/:
+</h3><ul>
+<li><strong>robot.urdf</strong>  -URDF模型(配置)</li>
+</ul>
+<h3 id="homecartographer_config">
+<a class="header-anchor" href="#homecartographer_config"></a>
+/home/cartographer_config
+</h3><ul>
+<li><strong>Cartographer节点配置文件</strong></li>
+</ul>
+<h1 id="后续纯定位模式加载复用">
+<a class="header-anchor" href="#%e5%90%8e%e7%bb%ad%e7%ba%af%e5%ae%9a%e4%bd%8d%e6%a8%a1%e5%bc%8f%e5%8a%a0%e8%bd%bd%e5%a4%8d%e7%94%a8"></a>
+后续纯定位模式加载复用
+</h1><p>结束当前建图轨迹，锁定数据：</p>
+        
+        <hr><p>本文2026-07-21首发于<a href='http://localhost:1313/'>红石的个人博客</a>，最后修改于2026-07-21</p>]]>
+      </description>
+      
+        <category>技术</category>
+      
+    </item>
+    
+  </channel>
+</rss>

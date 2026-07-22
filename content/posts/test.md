@@ -2,7 +2,7 @@
 title: "这是一篇测试文章"
 date: 2026-07-20
 draft: false
-categories: ["无"]
+categories: ["其他"]
 tags: ["杂谈", "其他"]
 mainSections: ["posts"] 
 ---

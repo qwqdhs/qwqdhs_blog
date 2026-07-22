@@ -4,7 +4,8 @@ date: 2026-07-22
 draft: false
 categories: ["技术"]
 tags: ["Linux", "Ubuntu", "自用"]
-mainSections: ["posts"] 
+mainSections: ["posts"]
+cover: "/images/333.jpeg"
 ---
 
 - **查询USB设备** : ls tty/dev/USB0*
