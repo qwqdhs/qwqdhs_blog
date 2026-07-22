@@ -5,6 +5,7 @@ draft: false
 categories: ["技术"]
 tags: ["C++", "NOI", "自用"]
 mainSections: ["posts"] 
+cover: "/images/444.png"
 ---
 
 # 主要内容
