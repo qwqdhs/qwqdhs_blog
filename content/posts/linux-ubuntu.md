@@ -1,8 +1,8 @@
 ---
 title: "一些ubuntu-linux命令"
-date: 2026-07-20
+date: 2026-07-22
 draft: false
-categories: ["无"]
+categories: ["技术"]
 tags: ["Linux", "Ubuntu", "自用"]
 mainSections: ["posts"] 
 ---

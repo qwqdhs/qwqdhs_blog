@@ -24,7 +24,7 @@ timeFormat: "2006-01-02 15:04:05"
 
 author: "qwq的红石/屿寻sama"
 email: qwqdhs@outlook.com
-description: "欢迎来到我的博客"
+description: "Believe you can and you’re halfway there."
 subtitle:
   typing:
     enable: true
@@ -32,6 +32,8 @@ subtitle:
       - "世界第一公主殿下"
       - "欢迎来到红石的博客"
       - "Ciallo~"
+      - "Believe you can and you’re halfway there."
+      - "评论区因为我没钱买子域名所以需要梯子才能上,so sorry"
     typeSpeed: 100
     backSpeed: 50
     backDelay: 2000
