@@ -1,0 +1,11 @@
+- name: 拔剑Sketon
+  link: https://d-sketon.github.io/        # 将 url 改为 link
+  avatar: https://d-sketon.github.io/avatar/avatar.webp  # 将 image 改为 avatar
+  desc: 东方人的日常                        # 将 description 改为 desc
+  group: 感谢大佬的主题
+
+- name: 千理博客
+  avatar: /images/avatar/ql.png
+  link: https://crcuqanli.top/index.html   # 将 link 统一放在 avatar 后面
+  desc: 千理博客励志做全网最好的教程
+  group: 好同学
