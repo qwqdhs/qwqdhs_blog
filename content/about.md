@@ -115,3 +115,45 @@ draft: false
 
 如您对上述许可条款有任何疑问，或有意申请商业用途授权，欢迎通过下方联系方式与我们沟通。感谢您对本网站的关注与支持。
 </details>
+
+---
+
+## 联系方式
+
+<div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px;">
+  
+  <!-- 邮箱 -->
+  <a href="mailto:qwqdhs@outlook.com" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #ea4335; color: white; padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem; min-width: 30x;">
+    <i class="fas fa-envelope"></i> 邮箱
+  </a>
+  
+  <!-- GitHub -->
+  <a href="https://github.com/qwqdhs" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #333; color: white; padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem; min-width: 30px;">
+    <i class="fab fa-github"></i> GitHub
+  </a>
+  
+  <!-- B站 -->
+  <a href="https://space.bilibili.com/691911446" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #fb7299; color: white; padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem; min-width: 30px;">
+    <i class="fab fa-bilibili"></i> B站
+  </a>
+  
+  <!-- Steam -->
+  <a href="https://steamcommunity.com/id/qwqdhs/" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #171a21; color: white; padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem; min-width: 30px;">
+    <i class="fab fa-steam"></i> Steam
+  </a>
+  
+  <!-- QQ -->
+  <a href="tencent://message/?uin=2248885109" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #12b7f5; color: white; padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem; min-width: 30px;">
+    <i class="fab fa-qq"></i> QQ
+  </a>
+
+  <!-- 洛谷 -->
+  <a href="https://www.luogu.com.cn/user/1328343" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #0099cc; color: white; padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem; min-width: 30px;">
+    <i class="fas fa-code"></i> 洛谷
+  </a>
+  
+  <!-- NSSCTF -->
+  <a href="https://www.nssctf.cn/user/54920" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #ff6b6b; color: white; padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem; min-width: 30px;">
+    <i class="fas fa-flag"></i> NSSCTF
+  </a>
+</div>

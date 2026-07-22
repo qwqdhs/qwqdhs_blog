@@ -24,3 +24,6 @@ defaultContentLanguage = "zh-cn"
     lineNos = true
     style = "github"        # 推荐暗色主题：monokai、dracula、github-dark
     noClasses = false
+[markup.goldmark]
+  [markup.goldmark.renderer]
+      unsafe = true

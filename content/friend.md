@@ -20,6 +20,6 @@ layout: "friend"
   desc: #简短描述
   image: #一张图片
 ```
-# 好朋友/同学们
+# 好朋友/同学们（排名不分先后）
 
 {{< friend_list >}}
