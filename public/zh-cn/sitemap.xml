@@ -53,6 +53,18 @@
     <loc>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2026-07-22T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/study/</loc>
+    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/contents/</loc>
+    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/%E7%9B%AE%E5%BD%95/</loc>
+    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/%E5%85%B6%E4%BB%96/</loc>
+    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/linux-ubuntu/</loc>
     <lastmod>2026-07-22T00:00:00+00:00</lastmod>
   </url><url>
@@ -107,9 +119,6 @@
     <loc>http://localhost:1313/posts/hole/</loc>
     <lastmod>2026-07-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2026-07-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/%E5%85%B6%E4%BB%96/</loc>
     <lastmod>2026-07-20T00:00:00+00:00</lastmod>
   </url><url>
@@ -120,5 +129,7 @@
     <lastmod>2026-07-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/md/</loc>
+  </url><url>
+    <loc>http://localhost:1313/archives/</loc>
   </url>
 </urlset>

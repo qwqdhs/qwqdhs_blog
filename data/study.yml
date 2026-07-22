@@ -1,0 +1,12 @@
+- name: "C++"
+  desc: "想打NOI，目标CSP-S一等"
+  progress: 40
+  image: 
+  color: "#00bfff"
+
+- name: "个人博客搭建"
+  desc: "搭建一个个人博客"
+  progress: 100
+  image:
+  color: "#ff7c7c"
+

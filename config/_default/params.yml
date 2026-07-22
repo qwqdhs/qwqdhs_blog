@@ -15,6 +15,9 @@ menu:
   - name: friend
     url: "friend"
     icon: "f0c0"
+  - name: level
+    url: "study"
+    icon: "f19d"
 
 mainSections: ["posts"]
 yearFormat: "2006"
@@ -85,11 +88,13 @@ sidebar:
     show_common: true
 
 social:
-  email: qwqdhs@outlook.com
+  email: mailto:qwqdhs@outlook.com
   github: https://github.com/qwqdhs
   bilibili: https://space.bilibili.com/691911446
   steam: https://steamcommunity.com/id/qwqdhs/
-  qq: 2248885109
+  qq: https://qm.qq.com/q/il6k9ki3IY
+  洛谷: https://www.luogu.com.cn/user/1328343
+  NSSCTF: https://www.nssctf.cn/user/54920
 
 widgets:
   - category
@@ -475,9 +480,9 @@ moe_icp:
   icpnumber:
 
 sponsor:
-  enable: false
+  enable: true
   tip:
-    zh-CN: 请我喝杯咖啡吧
+    zh-CN: 饭饭，饿饿~
     zh-TW: 請我喝杯咖啡吧
     en: Buy me a coffee
     ja: コーヒーを買ってください
@@ -487,13 +492,17 @@ sponsor:
     rotate: true
     mask: true
   qr:
-
+     - name: "微信"
+       src: "/sponsor/wechat.png" 
 share:
 
 home_categories:
-  enable: false
+  enable: true
   content:
-
+    - categories: "技术"
+      cover: "/images/666.png"
+    - categories: "其他"
+      cover: "/images/333.jpeg"
 ########################################
 # Experimental features
 ########################################
@@ -559,7 +568,24 @@ injector:
     </style>
   body_begin:
   body_end:
-  sidebar_begin:
+  injector:
+  sidebar_begin: |
+    <div style="background: rgba(255,255,255,0.7); backdrop-filter: blur(4px); border-radius: 16px; padding: 16px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+      <strong>📢 公告</strong>
+      <p style="margin: 8px 0 0 0; font-size: 0.95rem;">本站正在建设中，欢迎提出建议～</p>
+      <p style="margin: 4px 0 0 0; font-size: 0.9rem; opacity: 0.7;">由于我没钱买子域名所以评论区需要梯子才能访问 公告发布于：2026-07-22</p>
+    </div>
+      <!-- 自定义社交 -->
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+      <a href="https://www.luogu.com.cn/user/1328343" target="_blank" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none; color: #333; background: rgba(255,255,255,0.6); padding: 4px 12px; border-radius: 16px; font-size: 0.85rem;">
+        <img src="/images/luogu.png" alt="洛谷" style="width: 20px; height: 20px; border-radius: 50%;">
+        洛谷
+      </a>
+      <a href="https://www.nssctf.cn/user/54920" target="_blank" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none; color: #333; background: rgba(255,255,255,0.6); padding: 4px 12px; border-radius: 16px; font-size: 0.85rem;">
+        <img src="/images/nssctf.png" alt="NSSCTF" style="width: 20px; height: 20px; border-radius: 50%;">
+        NSSCTF
+      </a>
+    </div>
   sidebar_end:
 
 pjax:
