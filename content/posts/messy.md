@@ -5,14 +5,14 @@ draft: false
 categories: ["教程"]
 tags: ["C++", "NOI", "自用", "教程"]
 mainSections: ["posts"] 
-cover: "/images/777.jpeg"
+cover: "/images/777.png"
 ---
 
 ## 输出数组最大/最小值
 ### max_element和min_element
 - **介绍** ：min_element/max_element函数是C++标准模板库（STL）中的一个函数，用于查找指定范围内的最小元素。它返回一个指向范围内最小元素的迭代器
 - **作用**：作用：返回容器中最小值和最大值
-- **头文件**：在**lgorithm**中
+- **头文件**：**lgorithm**
 - **例**：
     ```cpp
     int a[5] = {1,2,3,4,5};
@@ -24,7 +24,7 @@ cover: "/images/777.jpeg"
 - **备注**：从C++11标准起，begin(a)和 end(a)，也可以写成a和a+5
 
 ## 保留x位小数
-### 需要iomanip头文件
+- ### **头文件**：iomanip
 ### fixed和setprecision()
 #### setprecision()
 - **作用**：控制浮点数输出格式，设置精度，当**与fixed一起使用**时，表示小数点后保留n位，如果**不搭配fixed使用**，则表示有效数字为n位
@@ -37,14 +37,17 @@ cover: "/images/777.jpeg"
     ```
 
 ## 最大公约数
+- **头文件**： numeric
+
+- **介绍**：如果a和b都为零，则返回零，否则返回|a|和|b|的最大公约数
 ```cpp
 //需要C++17标准
+//需要两者都是int类型
 gcd(a,b)
 ```
 
 ## 三个数比大小
 ```cpp
-//直接用std max和min就行
 //C++11标准
 max({a,b,c});
 min({a,b,c});
@@ -52,7 +55,7 @@ min({a,b,c});
 
 ## vector去重
 ```cpp
-//需要事先排序
+sort(a.begin(), a.end());  //需要事先排序
 a.erase(unique(a.begin(),a.end()), a.end());
 ```
 ### 工作原理
@@ -69,6 +72,6 @@ to_string(num);
 
 ## 参考资料/内容（侵删）
 1. [fixed和setprecision](https://juejin.cn/post/7434196191209357363)
-2. 
+2. [补充细节]deepseek
 
-#### 注：以上内容均之前在洛谷发布的文章，所以一口气全写这了，其他的STL教程将会单独发文章
+#### 注：以上内容均为之前在洛谷发的类似于笔记的文章，所以教程向不是特别强，以后其他的STL教程将会单独发文章
