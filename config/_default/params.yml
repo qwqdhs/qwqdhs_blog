@@ -482,11 +482,11 @@ moe_icp:
 sponsor:
   enable: true
   tip:
-    zh-CN: 饭饭，饿饿~
-    zh-TW: 請我喝杯咖啡吧
-    en: Buy me a coffee
-    ja: コーヒーを買ってください
-    pt-BR: Compre-me um café
+    zh-CN: 请我喝杯咖啡吧~
+    zh-TW: 請我喝杯咖啡吧~
+    en: Buy me a coffee~
+    ja: コーヒーを買ってください~
+    pt-BR: Compre-me um café~
   icon:
     url: "../images/taichi.png"
     rotate: true

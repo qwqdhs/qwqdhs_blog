@@ -32,6 +32,12 @@ mainSections: ["posts"]
 
 10.ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 
+### 保存/播放路径
+
+1.ros2 bag record /cmd_vel -o path_name
+
+2.ros2 bag play a_to_b_path_0.db3
+
 ## 命令作用与说明
 
 | 命令 | 作用 | 备注 |
@@ -46,6 +52,8 @@ mainSections: ["posts"]
 | ros2 run nav2_map_server map_saver_cli -f ~/my_new_map  |          保存地图         | 将建图完成后的内容保存 |
 | ros2 launch nav2_bringup navigation_launch.py map:=/path/to/your_map.yaml use_sim_time:=False  |     加载地图，并启动Nav2的导航栈              |  其中 use_sim_time:=False 表示使用硬件真实时间（实车模式）|
 |ros2 launch rosbridge_server rosbridge_websocket_launch.xml   |     启动 ROS2 WebSocket 通信服务              |在软件上进行控制  |
+| ros2 bag record /cmd_vel -o path_name   | 保存路径                   | path_name是文件名 |
+| ros2 bag play path_name.db3   | 播放路径                   | 没什么好说的 |
 
 # 文件路径以及文件说明
 ### /home/ysc/Desktop/rader:

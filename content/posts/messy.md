@@ -1,6 +1,6 @@
 ---
 title: "一些STL的教程（施工中）"
-date: 2026-07-20
+date: 2026-07-21
 draft: false
 categories: ["教程"]
 tags: ["C++", "NOI", "自用", "教程"]
@@ -12,7 +12,7 @@ cover: "/images/777.png"
 ### max_element和min_element
 - **介绍** ：min_element/max_element函数是C++标准模板库（STL）中的一个函数，用于查找指定范围内的最小元素。它返回一个指向范围内最小元素的迭代器
 - **作用**：作用：返回容器中最小值和最大值
-- **头文件**：**lgorithm**
+- **头文件**：**algorithm**
 - **例**：
     ```cpp
     int a[5] = {1,2,3,4,5};
@@ -24,7 +24,7 @@ cover: "/images/777.png"
 - **备注**：从C++11标准起，begin(a)和 end(a)，也可以写成a和a+5
 
 ## 保留x位小数
-- ### **头文件**：iomanip
+- **头文件**：iomanip
 ### fixed和setprecision()
 #### setprecision()
 - **作用**：控制浮点数输出格式，设置精度，当**与fixed一起使用**时，表示小数点后保留n位，如果**不搭配fixed使用**，则表示有效数字为n位
@@ -32,23 +32,23 @@ cover: "/images/777.png"
 - **作用**：强制以固定小数点表示法显示浮点数，**不使用**科学计数法表示，比如1234.5678就会显示为1234.5678，而不是1.2345678e+03
 - #### setprecision和fixed连用：
     ```cpp
-    cout<<fixed<<setprecision(x)<<a
+    cout<<fixed<<setprecision(x)<<a;
     //x表示保留几位
     ```
 
 ## 最大公约数
 - **头文件**： numeric
-
 - **介绍**：如果a和b都为零，则返回零，否则返回|a|和|b|的最大公约数
 ```cpp
 //需要C++17标准
 //需要两者都是int类型
 gcd(a,b)
 ```
+- **补充**：C++17也提供了 `lcm(a,b)` 求最小公倍数
 
 ## 三个数比大小
 ```cpp
-//C++11标准
+//C++11标准开始支持三个数了
 max({a,b,c});
 min({a,b,c});
 ```
@@ -59,19 +59,17 @@ sort(a.begin(), a.end());  //需要事先排序
 a.erase(unique(a.begin(),a.end()), a.end());
 ```
 ### 工作原理
-unique:将相邻的重复元素移动到容器末尾，并返回去重后第一个无效元素的迭代器。
+`unique` 将相邻的重复元素移动到容器末尾，并返回去重后第一个无效元素的迭代器；`erase` 删除从该迭代器到容器末尾的所有无效元素。注意 `unique` 只移除相邻重复，所以必须先排序
 
-erase:删除从 unique 返回的迭代器到容器末尾的所有无效元素。
-
-## string和int互转
+## 数据类型互转
 ```cpp
 //C++11标准
 to_string(num);
+stoi(str); //字符串转int
+stoll(str); //转long long
+stod(str); //转double
 ```
 
 
-## 参考资料/内容（侵删）
-1. [fixed和setprecision](https://juejin.cn/post/7434196191209357363)
-2. [补充细节]deepseek
-
-#### 注：以上内容均为之前在洛谷发的类似于笔记的文章，所以教程向不是特别强，以后其他的STL教程将会单独发文章
+>[!TIPS]
+> #### 注：以上内容均为之前在洛谷发的类似于笔记的文章，所以教程向不是特别强，以后其他的STL教程将会单独发文章

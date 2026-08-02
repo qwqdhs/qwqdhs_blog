@@ -1,12 +1,55 @@
-- name: "C++"
-  desc: "想打NOI，目标CSP-S一等"
-  progress: 40
-  image: 
-  color: "#00bfff"
-
 - name: "个人博客搭建"
   desc: "搭建一个个人博客"
   progress: 100
   image:
   color: "#ff7c7c"
 
+- name: "C++"
+  desc: "想打NOI，目标CSP-S一等"
+  progress: 40
+  image: 
+  color: "#00bfff"
+
+- name: "Linux"
+  desc: "好多东西都是linux"
+  progress: 20
+  image: 
+  color: "#00bfff"
+
+
+- name: "Python"
+  desc: "无"
+  progress: 30
+  image: 
+  color: "#00bfff"
+
+- name: "CTF-Reverse"
+  desc: "学着玩"
+  progress: 15
+  image: 
+  color: "#00bfff"
+
+- name: "网络安全"
+  desc: "学着玩"
+  progress: 15
+  image: 
+  color: "#00bfff"
+
+
+- name: "HTML/CSS/JS"
+  desc: "网络，网站，前端"
+  progress: 10
+  image: 
+  color: "#00bfff"
+
+- name: "AndrioStudio+flutter"
+  desc: "准备比赛"
+  progress: 10
+  image: 
+  color: "#00bfff"
+
+- name: "Java"
+  desc: "后端绕不开的地方"
+  progress: 0
+  image: 
+  color: "#00bfff"

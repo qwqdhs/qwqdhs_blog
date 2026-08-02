@@ -5,13 +5,12 @@ draft: false
 ---
 
 ## 关于我
-<blockquote class="info custom-block">
-    <p class="custom-block-title">INFO</p>
-    <p>为什么叫qwq的红石？</p>
-  </blockquote>
-  <blockquote>
-<p>说来话长，总之是从小时候的网名衍生过来的</p>
-</blockquote>
+>[!TIP]
+>为什么网名叫qwq的红石
+
+>[!NOTE]
+>说来话长，总之是从小时候的网名衍生过来的
+
 
 ### 自我介绍
 ~~Ciallo～(∠・ω< )⌒★~~
