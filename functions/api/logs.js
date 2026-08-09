@@ -1,18 +1,10 @@
 export async function onRequest(context) {
   const { request, env } = context;
-  const url = new URL(request.url);
-  const userId = url.searchParams.get('userId');
-
-  if (!userId) {
-    return new Response(JSON.stringify({ error: '缺少 userId 参数' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
+  
   const UNIVERSE_ID = env.UNIVERSE_ID || '9787384742';
   const API_KEY = env.LOG_API_KEY;
   const DATASTORE_NAME = 'ActionLogs';
+  const LOG_KEY = 'GlobalActionLogs';  // 固定键名
 
   if (!API_KEY) {
     console.error('环境变量未设置: LOG_API_KEY');
@@ -22,16 +14,17 @@ export async function onRequest(context) {
     });
   }
 
-  const apiUrl = `https://apis.roblox.com/datastores/v1/universes/${UNIVERSE_ID}/standard-datastores/datastore/entries/entry?datastoreName=${DATASTORE_NAME}&entryKey=${userId}&scope=global`;
+  // 构建 Roblox API URL（读取全局日志条目）
+  const apiUrl = `https://apis.roblox.com/datastores/v1/universes/${UNIVERSE_ID}/standard-datastores/datastore/entries/entry?datastoreName=${DATASTORE_NAME}&entryKey=${LOG_KEY}&scope=global`;
 
   try {
-    console.log(`[Logs] 查询玩家 ${userId} 的日志...`);
+    console.log(`[Logs] 正在获取全局操作日志...`);
     const response = await fetch(apiUrl, {
       headers: { 'x-api-key': API_KEY },
     });
 
     if (response.status === 404) {
-      console.log(`[Logs] 玩家 ${userId} 暂无日志`);
+      console.log(`[Logs] 暂无日志`);
       return new Response(JSON.stringify({ data: [] }), {
         headers: { 'Content-Type': 'application/json' },
       });
@@ -46,9 +39,15 @@ export async function onRequest(context) {
       });
     }
 
-    // 直接解析返回的数组（不是 Base64 编码！）
+    // 直接解析返回的数组
     const logs = await response.json();
-    console.log(`[Logs] 成功获取玩家 ${userId} 的日志，共 ${Array.isArray(logs) ? logs.length : 0} 条`);
+    
+    // 按时间倒序排列（最新的在前面）
+    if (Array.isArray(logs)) {
+      logs.sort((a, b) => b.time - a.time);
+    }
+    
+    console.log(`[Logs] 成功获取日志，共 ${Array.isArray(logs) ? logs.length : 0} 条`);
 
     return new Response(JSON.stringify({ data: logs }), {
       headers: { 'Content-Type': 'application/json' },

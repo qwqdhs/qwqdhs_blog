@@ -11,109 +11,144 @@ build:
 ---
 
 <style>
-/* 页面样式，不影响博客主体 */
 .logs-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 60px auto;
   padding: 0 20px;
-  font-family: monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 .logs-container h1 {
   font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-.logs-input-group {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+.logs-container .subtitle {
+  color: #666;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
 }
-.logs-input-group input {
-  flex: 1;
-  min-width: 200px;
-  padding: 10px 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  background: rgba(255,255,255,0.8);
-}
-.logs-input-group button {
-  padding: 10px 24px;
-  background: #00bfff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.logs-input-group button:hover {
-  background: #0099cc;
-}
-#logs-output {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(4px);
-  padding: 16px 20px;
+.logs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  white-space: pre-wrap;
-  max-height: 600px;
-  overflow: auto;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
-#logs-output.loading {
+.logs-table th {
+  background: #f8f9fa;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #e9ecef;
+}
+.logs-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #f1f3f5;
+  font-size: 0.95rem;
+}
+.logs-table tr:hover {
+  background: #f8f9fa;
+}
+.logs-table .action-increase {
+  color: #2e7d32;
+}
+.logs-table .action-decrease {
+  color: #c62828;
+}
+.logs-table .xp-change {
+  font-weight: 600;
+}
+#logs-status {
+  text-align: center;
+  padding: 40px;
   color: #888;
+}
+.loading-spinner {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #00bfff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>
 
 <div class="logs-container">
   <h1>📋 操作日志</h1>
-  <div class="logs-input-group">
-    <input type="text" id="userIdInput" placeholder="输入玩家 UserId" />
-    <button onclick="fetchLogs()">查询</button>
+  <p class="subtitle">显示所有玩家的 XP 变更记录（最近 500 条）</p>
+  
+  <div id="logs-container">
+    <div id="logs-status">加载中...</div>
   </div>
-  <div id="logs-output" class="loading">输入玩家 ID 后点击查询</div>
 </div>
 
 <script>
-async function fetchLogs() {
-  const userId = document.getElementById('userIdInput').value.trim();
-  const output = document.getElementById('logs-output');
-  
-  if (!userId) {
-    output.textContent = '⚠️ 请输入玩家 UserId';
-    output.className = '';
-    return;
-  }
-
-  output.textContent = '🔄 加载中...';
-  output.className = 'loading';
+async function fetchAllLogs() {
+  const container = document.getElementById('logs-container');
+  const statusDiv = document.getElementById('logs-status');
 
   try {
-    const res = await fetch(`/api/logs?userId=${userId}`);
+    const res = await fetch('/api/logs');
     const data = await res.json();
-    
+
     if (data.error) {
-      output.textContent = '❌ ' + data.error;
-    } else if (data.data && Array.isArray(data.data)) {
-      output.textContent = data.data.map(item => 
-        `[${new Date(item.time * 1000).toLocaleString()}] ${item.action}${item.details ? ' - ' + item.details : ''}`
-      ).join('\n') || '暂无操作记录';
-    } else {
-      output.textContent = JSON.stringify(data, null, 2);
+      statusDiv.innerHTML = '❌ ' + data.error;
+      return;
     }
-    output.className = '';
+
+    if (!data.data || data.data.length === 0) {
+      statusDiv.innerHTML = '📭 暂无操作记录';
+      return;
+    }
+
+    // 构建表格
+    let html = `
+      <table class="logs-table">
+        <thead>
+          <tr>
+            <th>时间</th>
+            <th>操作者</th>
+            <th>目标玩家</th>
+            <th>操作</th>
+            <th>变化量</th>
+            <th>当前 XP</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    data.data.forEach(log => {
+      const time = new Date(log.time * 1000).toLocaleString('zh-CN');
+      const actionClass = log.action === '增加' ? 'action-increase' : 'action-decrease';
+      const sign = log.amount >= 0 ? '+' : '';
+      const emoji = log.action === '增加' ? '📈' : '📉';
+
+      html += `
+        <tr>
+          <td>${time}</td>
+          <td>${log.adminName}</td>
+          <td>${log.targetName}</td>
+          <td class="${actionClass}">${emoji} ${log.action}</td>
+          <td class="xp-change ${actionClass}">${sign}${log.amount}</td>
+          <td>${log.currentXP}</td>
+        </tr>
+      `;
+    });
+
+    html += `</tbody></table>`;
+    container.innerHTML = html;
+
   } catch (e) {
-    output.textContent = '❌ 加载失败: ' + e.message;
-    output.className = '';
+    statusDiv.innerHTML = '❌ 加载失败: ' + e.message;
   }
 }
 
-// 按回车键触发查询
-document.getElementById('userIdInput').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') fetchLogs();
-});
+// 页面加载时自动获取日志
+fetchAllLogs();
 </script>
