@@ -8,47 +8,5 @@
   official_desc: "官网(下载页面)"
   official_url: "https://winscp.net/eng/download.php"
   show_official: true
+  show_download: true
 
-- name: "EV录屏"
-  size: "39549KB"
-  path: "/downloads/EVCapture_v5.5.1.exe"
-  icon: "📄"
-  type: "exe安装包"
-  desc: "EV录屏是免费无水印，集视频录制与直播功能于一身的桌面录屏软件。"
-  note: "版本：5.5.1"
-  official_desc: "官网"
-  official_url: "https://www.ieway.cn/evcapture.html"
-  show_official: true
-
-- name: "WinSCP"
-  size: "11317KB"
-  path: "/downloads/WinSCP-6.3.3-Setup.exe"
-  icon: "📄"
-  type: "安装包"
-  desc: "WinSCP是一款Windows平台上的文件传输工具，完全免费且开源。"
-  note: "版本：6.3.3"
-  official_desc: "官网"
-  official_url: "https://winscp.net/eng/download.php"
-  show_official: true
-
-- name: "WinSCP"
-  size: "11317KB"
-  path: "/downloads/WinSCP-6.3.3-Setup.exe"
-  icon: "📄"
-  type: "安装包"
-  desc: "WinSCP是一款Windows平台上的文件传输工具，完全免费且开源。"
-  note: "版本：6.3.3"
-  official_desc: "官网"
-  official_url: "https://winscp.net/eng/download.php"
-  show_official: true
-
-- name: "WinSCP"
-  size: "11317KB"
-  path: "/downloads/WinSCP-6.3.3-Setup.exe"
-  icon: "📄"
-  type: "安装包"
-  desc: "WinSCP是一款Windows平台上的文件传输工具，完全免费且开源。"
-  note: "版本：6.3.3"
-  official_desc: "官网"
-  official_url: "https://winscp.net/eng/download.php"
-  show_official: true
