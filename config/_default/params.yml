@@ -6,9 +6,9 @@ menu:
   - name: home
     url: ""
     icon: "f015"
-  - name: archives
-    url: "archives"
-    icon: "f187"
+  - name: contents
+    url: "posts/contents"
+    icon: "f0cb"
   - name: about
     url: "about"
     icon: "f007"
@@ -18,6 +18,9 @@ menu:
   - name: level
     url: "study"
     icon: "f19d"
+  - name: download
+    url: "posts/download"
+    icon: "f019"
   - name: hsv
     url: "hsv"
     icon: "f1fc"
