@@ -2,7 +2,7 @@
 title: "文件下载"
 date: 2026-09-02
 draft: false
-_build:
+build:
   list: false
 ---
 
