@@ -3,12 +3,12 @@ title: "一些常用的ubuntu命令"
 date: 2026-08-25
 sticky: false
 draft: false
-categories: ["其他"]
-tags: ["目录"]
-weight: 1
+categories: ["技术"]
+tags: ["分享", "linux", "ubuntu", "命令"]
 mainSections: ["posts"] 
-cover: "/images/888.png"
+cover: "/images/002.jpeg"
 ---
+
 
 # 一些常用的ubuntu命令（对于我来说）
 

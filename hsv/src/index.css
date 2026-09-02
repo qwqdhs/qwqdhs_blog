@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Manrope', system-ui, sans-serif;
+  line-height: 1.55;
+  font-weight: 400;
+  color-scheme: light;
+  --paper: #F2EBDC;
+  --ink: #0B0B0F;
+  --accent: #FF3B1C;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  background-color: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+body {
+  /* 纸张纹理 + 微噪点 */
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(255, 59, 28, 0.05) 0, transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(59, 91, 255, 0.05) 0, transparent 30%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+/* 网格底纹辅助类 */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(11, 11, 15, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 11, 15, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border-radius: 0;
+  border: 2px solid var(--paper);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* 滑块 - 更粗壮更编辑风 */
+.hsv-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 16px;
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.hsv-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 0;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  cursor: grab;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.hsv-slider::-webkit-slider-thumb:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.hsv-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.hsv-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 0;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  cursor: grab;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* 复制反馈 */
+.copy-flash {
+  animation: copy-flash 0.5s ease-out;
+}
+@keyframes copy-flash {
+  0% { background-color: var(--accent); color: var(--paper); }
+  100% { background-color: transparent; }
+}
+
+/* 编辑风硬阴影 */
+.shadow-brut {
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.shadow-brut-sm {
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.shadow-brut-accent {
+  box-shadow: 6px 6px 0 var(--accent);
+}
+
+/* 标签底纹 */
+.dot-pattern {
+  background-image: radial-gradient(var(--ink) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.4s; }
+.delay-6 { animation-delay: 0.48s; }
