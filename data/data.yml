@@ -1,0 +1,10 @@
+- name: "WinSCP"
+  size: "11317KB
+  path: "/downloads/WinSCP-6.3.3-Setup.exe"
+  icon: "📄"
+  type: "安装包"
+  desc: "WinSCP是一款Windows平台上的文件传输工具，完全免费且开源。"
+  note: "版本：6.3.3"
+  official_desc: "官网"
+  official_url: "https://winscp.net/eng/download.php"
+  show_official: true

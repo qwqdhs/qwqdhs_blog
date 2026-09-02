@@ -1,0 +1,45 @@
+{{ $files := .Site.Data.downloads }}
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+  {{ range $files }}
+  <div style="padding: 16px 20px; background: rgba(255,255,255,0.7); backdrop-filter: blur(4px); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s;">
+    <!-- 第一行：文件名 + 类型 + 大小 -->
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <span style="font-size: 1.8rem; line-height: 1;">{{ .icon | default "📄" }}</span>
+      <div>
+        <strong style="font-size: 1.1rem;">{{ .name }}</strong>
+        <span style="font-size: 0.85rem; color: #888; margin-left: 6px;">({{ .size }})</span>
+      </div>
+      <span style="background: #e8f0fe; color: #1a73e8; font-size: 0.75rem; padding: 2px 10px; border-radius: 12px;">{{ .type }}</span>
+    </div>
+
+    <!-- 第二行：描述 + 备注 -->
+    <div style="margin-top: 4px; font-size: 0.9rem; color: #555;">
+      <span>{{ .desc }}</span>
+      {{ if .note }}
+      <span style="margin-left: 12px; font-size: 0.8rem; color: #999;">📌 {{ .note }}</span>
+      {{ end }}
+    </div>
+
+    <!-- 第三行：官网描述（如果存在） -->
+    {{ if .official_desc }}
+    <div style="margin-top: 6px; font-size: 0.85rem; color: #1a73e8;">
+      🌐 {{ .official_desc }}
+    </div>
+    {{ end }}
+
+    <!-- 第四行：双按钮 -->
+    <div style="display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap;">
+      <!-- 下载按钮 -->
+      <a href="{{ .path }}" download style="padding: 8px 24px; background: #00bfff; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.9rem; transition: background 0.2s;" onmouseover="this.style.background='#0099cc'" onmouseout="this.style.background='#00bfff'">
+        ⬇️ 下载
+      </a>
+      <!-- 官网跳转按钮（由 bool 控制） -->
+      {{ if and .show_official .official_url }}
+      <a href="{{ .official_url }}" target="_blank" style="padding: 8px 24px; background: #4caf50; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.9rem; transition: background 0.2s;" onmouseover="this.style.background='#388e3c'" onmouseout="this.style.background='#4caf50'">
+        🔗 官网
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>

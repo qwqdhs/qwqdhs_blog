@@ -1,3 +1,15 @@
+---
+title: "一些常用的ubuntu命令"
+date: 2026-08-25
+sticky: false
+draft: false
+categories: ["其他"]
+tags: ["目录"]
+weight: 1
+mainSections: ["posts"] 
+cover: "/images/888.png"
+---
+
 # 一些常用的ubuntu命令（对于我来说）
 
 ## 注意事项以及一些提示
