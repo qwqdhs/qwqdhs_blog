@@ -18,6 +18,9 @@ menu:
   - name: level
     url: "study"
     icon: "f19d"
+  - name: hsv
+    url: "hsv"
+    icon: "f1fc"
 
 mainSections: ["posts"]
 yearFormat: "2006"

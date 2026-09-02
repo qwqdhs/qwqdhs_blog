@@ -10,7 +10,7 @@ import Palette from "@/pages/Palette";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/hsv">
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />

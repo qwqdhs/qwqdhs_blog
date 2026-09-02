@@ -1,6 +1,6 @@
 ---
 title: "目录"
-date: 2026-07-22
+date: 2026-09-03
 sticky: true
 draft: false
 categories: ["其他"]
@@ -33,3 +33,4 @@ cover: "/images/888.png"
         1.[建站踩的第一个坑](https://qwqdhs.com/posts/hole/)
     - ## 其他
         1.[测试文章](https://qwqdhs.com/posts/test/)
+        2.[文件下载](https://qwqdhs.com/posts/download/)
