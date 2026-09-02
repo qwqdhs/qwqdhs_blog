@@ -29,11 +29,13 @@
 
     <!-- 第四行：双按钮 -->
     <div style="display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap;">
-      <!-- 下载按钮 -->
+      <!-- 下载按钮（由 show_download 控制） -->
+      {{ if and .show_download .path }}
       <a href="{{ .path }}" download style="padding: 8px 24px; background: #00bfff; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.9rem; transition: background 0.2s;" onmouseover="this.style.background='#0099cc'" onmouseout="this.style.background='#00bfff'">
         ⬇️ 下载
       </a>
-      <!-- 官网跳转按钮（由 bool 控制） -->
+      {{ end }}
+      <!-- 官网跳转按钮（由 show_official 控制） -->
       {{ if and .show_official .official_url }}
       <a href="{{ .official_url }}" target="_blank" style="padding: 8px 24px; background: #4caf50; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.9rem; transition: background 0.2s;" onmouseover="this.style.background='#388e3c'" onmouseout="this.style.background='#4caf50'">
         🔗 官网
