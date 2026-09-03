@@ -13,3 +13,5 @@ cover: "/images/999.jpg"
 # 📦 文件下载
 
 {{< download_list >}}
+
+<script src="/js/download-auth.js" defer></script>

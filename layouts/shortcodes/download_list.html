@@ -29,9 +29,15 @@
 
     <!-- 第四行：双按钮 -->
     <div style="display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap;">
-      <!-- 下载按钮（由 show_download 控制） -->
+      <!-- 下载按钮（由 show_download 控制，并添加自定义属性） -->
       {{ if and .show_download .path }}
-      <a href="{{ .path }}" download style="padding: 8px 24px; background: #00bfff; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.9rem; transition: background 0.2s;" onmouseover="this.style.background='#0099cc'" onmouseout="this.style.background='#00bfff'">
+      <a href="{{ .path }}"
+         download
+         class="download-btn"
+         data-password-hash="{{ .password_hash }}"
+         data-filename="{{ .name }}"
+         style="padding: 8px 24px; background: #00bfff; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; cursor: pointer; display: inline-block;"
+         onmouseover="this.style.background='#0099cc'" onmouseout="this.style.background='#00bfff'">
         ⬇️ 下载
       </a>
       {{ end }}

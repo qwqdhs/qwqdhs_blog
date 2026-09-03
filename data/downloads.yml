@@ -7,6 +7,7 @@
   note: "版本：6.3.3"
   official_desc: "官网(下载页面)"
   official_url: "https://winscp.net/eng/download.php"
+  password_hash: "18575d069537fe89ef3dc3f0a91d234af1830dc02749f15ceb8fa2cba18cf9c36f45dc5c30b98e217adf5da6e7bde1707ae8ad5b6433e5f2ab23eba40fcf9fa6"
   show_official: true
   show_download: true
 
