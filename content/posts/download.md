@@ -14,4 +14,37 @@ cover: "/images/999.jpg"
 
 {{< download_list >}}
 
-<script src="/js/download-auth.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const downloadBtns = document.querySelectorAll('a.download-btn');
+
+  downloadBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const hash = this.dataset.passwordHash;
+      if (!hash) return;
+
+      e.preventDefault();
+
+      const filename = this.dataset.filename || '文件';
+      const userPwd = prompt(`请输入 “${filename}” 的下载密码：`);
+
+      if (userPwd === null) return;
+
+      crypto.subtle.digest('SHA-512', new TextEncoder().encode(userPwd))
+        .then(buffer => {
+          const hashArray = Array.from(new Uint8Array(buffer));
+          const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+          if (hashHex === hash) {
+            window.location.href = this.href;
+          } else {
+            alert('密码错误！');
+          }
+        })
+        .catch(err => {
+          alert('计算哈希失败，请重试。');
+          console.error(err);
+        });
+    });
+  });
+});
+</script>
