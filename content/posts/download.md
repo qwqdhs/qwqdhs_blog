@@ -35,7 +35,13 @@ document.addEventListener('DOMContentLoaded', function() {
           const hashArray = Array.from(new Uint8Array(buffer));
           const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
           if (hashHex === hash) {
-            window.location.href = this.href;
+            // 创建临时链接触发下载
+            const link = document.createElement('a');
+            link.href = this.href;
+            link.download = true;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
           } else {
             alert('密码错误！');
           }
