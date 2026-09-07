@@ -35,13 +35,21 @@ document.addEventListener('DOMContentLoaded', function() {
           const hashArray = Array.from(new Uint8Array(buffer));
           const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
           if (hashHex === hash) {
-            // 创建临时链接触发下载
-            const link = document.createElement('a');
-            link.href = this.href;
-            link.download = true;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            // 密码正确！
+            const link = this.href;
+            // 判断是否为外部链接
+            if (link.startsWith('http://') || link.startsWith('https://')) {
+              window.location.href = link;
+            } else {
+              // 本地链接：使用 <a> 触发下载
+              const a = document.createElement('a');
+              a.href = link;
+              // ✅ 关键修复：直接使用文件名，而不是 true
+              a.download = filename;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            }
           } else {
             alert('密码错误！');
           }
