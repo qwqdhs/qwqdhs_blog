@@ -5,7 +5,7 @@ draft: false
 categories: ["技术"]
 tags: ["C++", "NOI", "自用", "教程", "CPS-S", "总结"]
 mainSections: ["posts"] 
-cover: "/images/003.png"
+cover: "/images/004.png"
 ---
 
 ### 声明
