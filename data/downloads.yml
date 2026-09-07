@@ -10,9 +10,9 @@
   show_official: true
   show_download: true
 
-- name: "straight_line.db3"
-  size: "28KB"
-  path: "/downloads/straight_line.db3"
+- name: "straight_line.csv"
+  size: "?"
+  path: "/downloads/straight_line.csv"
   icon: "📄"
   type: "?"
   desc: "自用文件"
