@@ -1,46 +1,43 @@
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const downloadBtns = document.querySelectorAll('a.download-btn');
-
-  downloadBtns.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const hash = this.dataset.passwordHash;
-      if (!hash) return;
-
-      e.preventDefault();
-
-      const filename = this.dataset.filename || '文件';
-      const userPwd = prompt(`请输入 “${filename}” 的下载密码：`);
-
-      if (userPwd === null) return;
-
-      crypto.subtle.digest('SHA-512', new TextEncoder().encode(userPwd))
-        .then(buffer => {
-          const hashArray = Array.from(new Uint8Array(buffer));
-          const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-          if (hashHex === hash) {
-            const link = this.href;
-            if (link.startsWith('http://') || link.startsWith('https://')) {
-              window.location.href = link;
-            } else {
-              // 本地链接：使用 <a> 触发下载
-              const a = document.createElement('a');
-              a.href = link;
-              // 设置正确的文件名（从 data-filename 获取）
-              a.download = filename;  // 注意：这里直接使用文件名
-              document.body.appendChild(a);
-              a.click();
-              document.body.removeChild(a);
-            }
-          } else {
-            alert('密码错误！');
-          }
-        })
-        .catch(err => {
-          alert('计算哈希失败，请重试。');
-          console.error(err);
-        });
-    });
-  });
-});
-</script>
+{{ $files := .Site.Data.downloads }}
+{{ if $files }}
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+  {{ range $files }}
+  <div style="padding: 16px 20px; background: rgba(255,255,255,0.7); backdrop-filter: blur(4px); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <span style="font-size: 1.8rem;">{{ .icon | default "📄" }}</span>
+      <div>
+        <strong>{{ .name }}</strong>
+        <span style="color: #888; font-size: 0.85rem;">({{ .size }})</span>
+      </div>
+      <span style="background: #e8f0fe; color: #1a73e8; font-size: 0.75rem; padding: 2px 10px; border-radius: 12px;">{{ .type }}</span>
+    </div>
+    <div style="margin-top: 4px; color: #555; font-size: 0.9rem;">
+      {{ .desc }}
+      {{ if .note }}<span style="margin-left: 12px; color: #999; font-size: 0.8rem;">📌 {{ .note }}</span>{{ end }}
+    </div>
+    {{ if .official_desc }}
+    <div style="margin-top: 6px; color: #1a73e8; font-size: 0.85rem;">🌐 {{ .official_desc }}</div>
+    {{ end }}
+    <div style="display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap;">
+      {{ if and .show_download .path }}
+      <a href="{{ .path }}"
+         download
+         class="download-btn"
+         data-password-hash="{{ .password_hash }}"
+         data-filename="{{ .name }}"
+         style="padding: 8px 24px; background: #00bfff; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.9rem; display: inline-block; cursor: pointer;">
+        ⬇️ 下载
+      </a>
+      {{ end }}
+      {{ if and .show_official .official_url }}
+      <a href="{{ .official_url }}" target="_blank" style="padding: 8px 24px; background: #4caf50; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.9rem;">
+        🔗 官网
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{ else }}
+<p>暂无文件</p>
+{{ end }}
