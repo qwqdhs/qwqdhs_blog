@@ -13,6 +13,10 @@ hsv/tsconfig.tsbuildinfo
 hsv/tsconfig.app.tsbuildinfo
 hsv/tsconfig.node.tsbuildinfo
 
+# HSV 临时源码工程目录(开发完构建产物已部署到 static/hsv/,源码不入库)
+# 前导 / 限定只匹配仓库根目录的 HSV/,避免误伤 static/hsv/
+/HSV/
+
 # 副本/备份文件,不应入库
 **/* - 副本/
 **/* - 副本.*
