@@ -1,0 +1,364 @@
+{{- define "main" -}}
+<style>
+  /* ===== 随手记 ===== */
+  .notes-wrap {
+    max-width: 780px; margin: 0 auto;
+    background: #fff; color: #3c4858;
+    border-radius: 16px; padding: 20px 22px 18px;
+    box-shadow: 0 2px 12px rgba(2,136,209,0.10);
+  }
+  .notes-title {
+    font-size: 1.5rem; font-weight: 700; color: #0288d1;
+    margin-bottom: 4px;
+  }
+  .notes-sub { font-size: 0.85rem; opacity: 0.65; margin-bottom: 18px; color: #3c4858; }
+
+  /* 码输入 */
+  .notes-gate {
+    background: transparent; border: 1px solid rgba(2,136,209,0.25);
+    border-radius: 16px; padding: 28px 20px; text-align: center;
+  }
+  .notes-gate p { font-size: 0.9rem; opacity: 0.7; margin-bottom: 18px; }
+  #room-input {
+    width: 70%; padding: 12px; font-size: 1.3rem; text-align: center;
+    letter-spacing: 5px; border: 2px solid var(--color-link, #0288d1);
+    border-radius: 12px; outline: none; font-weight: 600;
+    background: #fff; color: #3c4858;
+  }
+  #enter-btn {
+    display: block; margin: 14px auto 0; padding: 11px 40px; font-size: 1rem; font-weight: 600;
+    border-radius: 12px; background: linear-gradient(135deg, #0288d1, #00bcd4); color: #fff;
+  }
+  #enter-btn:disabled { opacity: 0.6; }
+  #gate-error { color: #e53935; font-size: 0.85rem; margin-top: 10px; min-height: 1.2em; }
+  .notes-tip { margin-top: 14px; font-size: 0.75rem; opacity: 0.5; }
+
+  /* 笔记区 */
+  #notes-app { display: none; }
+  .notes-topbar {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+  }
+  .room-badge {
+    font-size: 0.8rem; background: rgba(2,136,209,0.12); color: var(--color-link, #0277bd);
+    padding: 3px 10px; border-radius: 999px; margin-left: 8px; font-weight: 600;
+  }
+  #change-room {
+    font-size: 0.82rem; color: var(--color-link, #0288d1);
+    background: rgba(2,136,209,0.08); padding: 6px 12px; border-radius: 8px;
+  }  #feed {
+    max-height: 62vh; overflow-y: auto; padding: 4px 2px;
+    display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px;
+  }
+  .note-card {
+    background: #fff; border: 1px solid rgba(2,136,209,0.18);
+    border-radius: 14px; padding: 12px 14px;
+    animation: note-pop .25s ease;
+  }
+  @keyframes note-pop { from { transform: translateY(6px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .note-time { font-size: 0.72rem; color: #90a4ae; margin-bottom: 6px; }
+  .note-text { font-size: 0.95rem; line-height: 1.65; white-space: pre-wrap; word-break: break-word; }
+  .note-imgs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 8px; }
+  .note-imgs.single { grid-template-columns: 1fr; }
+  .note-imgs img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px;
+    cursor: zoom-in; background: #eceff1;
+  }
+  #feed-empty { text-align: center; opacity: 0.45; font-size: 0.85rem; padding: 30px 0; }
+
+  /* 发布栏 */
+  .notes-composer {
+    position: sticky; bottom: 0;
+    background: #fff;
+    border: 1px solid rgba(2,136,209,0.25);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(2,136,209,0.18);
+    padding: 10px 12px;
+  }
+  #img-previews { display: none; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+  #img-previews.show { display: flex; }
+  .img-prev { position: relative; width: 52px; height: 52px; }
+  .img-prev img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+  .img-prev .rm {
+    position: absolute; top: -6px; right: -6px; width: 18px; height: 18px;
+    background: #e53935; color: #fff; border-radius: 50%; font-size: 11px;
+    line-height: 18px; text-align: center; cursor: pointer;
+  }
+  .composer-row { display: flex; gap: 8px; align-items: flex-end; }
+  #note-input {
+    flex: 1; resize: none; border: 2px solid rgba(2,136,209,0.35); border-radius: 12px;
+    padding: 9px 12px; font-size: 0.95rem; font-family: inherit;
+    outline: none; max-height: 120px; background: #fff; color: #3c4858;
+  }
+  #note-input:focus { border-color: var(--color-link, #0288d1); }
+  .icon-btn, #send-btn {
+    width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0; font-size: 1.1rem;
+  }
+  .icon-btn { background: rgba(2,136,209,0.08); color: var(--color-link, #0288d1); }
+  #send-btn { background: linear-gradient(135deg, #0288d1, #00bcd4); color: #fff; }
+  #send-btn:disabled { opacity: 0.5; }
+  #status { text-align: center; font-size: 0.72rem; color: #90a4ae; padding-top: 5px; min-height: 1em; }
+
+  /* 图片查看 */
+  #viewer {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.88); align-items: center; justify-content: center;
+  }
+  #viewer.show { display: flex; }
+  #viewer img { max-width: 96vw; max-height: 92vh; border-radius: 8px; }
+</style>
+
+<div class="notes-wrap">
+  <h1 class="notes-title">📝 随手记</h1>
+  <p class="notes-sub">输入码同步文字与图片 · 相同码的设备看到相同内容 · 页面每 10 秒自动刷新</p>
+
+  <!-- 码输入 -->
+  <div class="notes-gate" id="gate">
+    <p>输入你的码，进入属于这个码的记事本</p>
+    <input id="room-input" type="text" inputmode="numeric" maxlength="32"
+           placeholder="输入码，如 111" autocomplete="off">
+    <div id="gate-error"></div>
+    <button id="enter-btn">进入</button>
+    <div class="notes-tip">码即房间：111 和 222 的内容互相隔离，请勿使用过于简单的码</div>
+  </div>
+
+  <!-- 笔记区 -->
+  <div id="notes-app">
+    <div class="notes-topbar">
+      <div><strong style="color:var(--color-link,#0288d1)">当前记事本</strong><span class="room-badge" id="room-badge"></span></div>
+      <button id="change-room">换码</button>
+    </div>
+    <div id="feed"></div>
+    <div class="notes-composer">
+      <div id="img-previews"></div>
+      <div class="composer-row">
+        <button class="icon-btn" id="img-btn" title="添加图片">🖼️</button>
+        <textarea id="note-input" rows="1" placeholder="记点什么…"></textarea>
+        <button id="send-btn" title="发送">➤</button>
+      </div>
+      <div id="status"></div>
+    </div>
+  </div>
+</div>
+
+<div id="viewer"><img id="viewer-img" alt=""></div>
+<input type="file" id="file-input" accept="image/*" multiple hidden>
+
+<script>
+(function () {
+  var ROOM_KEY = 'notes_room_code';
+  var $ = function (id) { return document.getElementById(id); };
+  var gate = $('gate'), app = $('notes-app'), feed = $('feed'),
+      roomInput = $('room-input'), enterBtn = $('enter-btn'), gateError = $('gate-error'),
+      roomBadge = $('room-badge'), changeRoomBtn = $('change-room'),
+      noteInput = $('note-input'), sendBtn = $('send-btn'), imgBtn = $('img-btn'),
+      fileInput = $('file-input'), imgPreviews = $('img-previews'),
+      statusEl = $('status'), viewer = $('viewer'), viewerImg = $('viewer-img');
+
+  var room = '', pendingImages = [], pollTimer = null;
+
+  function fmtTime(ts) {
+    var d = new Date(ts), now = new Date();
+    var pad = function (n) { return n < 10 ? '0' + n : n; };
+    var hm = pad(d.getHours()) + ':' + pad(d.getMinutes());
+    if (d.toDateString() === now.toDateString()) return '今天 ' + hm;
+    return (d.getMonth() + 1) + '月' + d.getDate() + '日 ' + hm;
+  }
+  function setStatus(msg) { statusEl.textContent = msg || ''; }
+  function esc(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function api(method, body) {
+    return fetch('/api/notes?room=' + encodeURIComponent(room), {
+      method: method,
+      headers: body ? { 'Content-Type': 'application/json' } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
+    }).then(function (r) {
+      return r.json().then(function (data) {
+        if (!r.ok) throw new Error(data.error || '请求失败');
+        return data;
+      });
+    });
+  }
+
+  function render(notes) {
+    if (!notes.length) {
+      feed.innerHTML = '<div id="feed-empty">还没有内容，写下第一条吧 ✍️</div>';
+      return;
+    }
+    var html = '';
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i];
+      html += '<div class="note-card"><div class="note-time">' + fmtTime(n.time) + '</div>';
+      if (n.text) html += '<div class="note-text">' + esc(n.text) + '</div>';
+      if (n.images && n.images.length) {
+        html += '<div class="note-imgs' + (n.images.length === 1 ? ' single' : '') + '">';
+        for (var j = 0; j < n.images.length; j++) {
+          html += '<img src="' + n.images[j] + '" loading="lazy" alt="图片">';
+        }
+        html += '</div>';
+      }
+      html += '</div>';
+    }
+    feed.innerHTML = html;
+  }
+
+  function refresh() {
+    return api('GET').then(function (data) { render(data.notes); });
+  }
+  function startPolling() {
+    stopPolling();
+    pollTimer = setInterval(function () {
+      if (document.visibilityState === 'visible') refresh().catch(function () {});
+    }, 10000);
+  }
+  function stopPolling() { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
+
+  function enterRoom(code) {
+    room = code;
+    localStorage.setItem(ROOM_KEY, code);
+    roomBadge.textContent = '码 ' + code;
+    gate.style.display = 'none';
+    app.style.display = 'block';
+    feed.innerHTML = '<div id="feed-empty">加载中…</div>';
+    refresh().catch(function (e) {
+      feed.innerHTML = '<div id="feed-empty">加载失败：' + esc(e.message) + '</div>';
+    });
+    startPolling();
+  }
+  function exitRoom() {
+    stopPolling();
+    room = '';
+    app.style.display = 'none';
+    gate.style.display = 'block';
+    roomInput.value = '';
+    gateError.textContent = '';
+  }
+
+  enterBtn.addEventListener('click', function () {
+    var code = roomInput.value.trim();
+    if (!/^[a-zA-Z0-9]{1,32}$/.test(code)) {
+      gateError.textContent = '码只能是 1-32 位字母或数字';
+      return;
+    }
+    enterBtn.disabled = true;
+    enterBtn.textContent = '进入中…';
+    room = code;
+    api('GET').then(function () {
+      enterBtn.disabled = false;
+      enterBtn.textContent = '进入';
+      enterRoom(code);
+    }).catch(function (e) {
+      enterBtn.disabled = false;
+      enterBtn.textContent = '进入';
+      gateError.textContent = e.message;
+    });
+  });
+  roomInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') enterBtn.click();
+  });
+  changeRoomBtn.addEventListener('click', exitRoom);
+
+  function compress(file) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        var img = new Image();
+        img.onload = function () {
+          var max = 1280, w = img.width, h = img.height;
+          if (w > max || h > max) {
+            var ratio = Math.min(max / w, max / h);
+            w = Math.round(w * ratio); h = Math.round(h * ratio);
+          }
+          var canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', 0.7));
+        };
+        img.onerror = reject;
+        img.src = reader.result;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderPreviews() {
+    imgPreviews.innerHTML = '';
+    pendingImages.forEach(function (src, idx) {
+      var div = document.createElement('div');
+      div.className = 'img-prev';
+      div.innerHTML = '<img src="' + src + '"><span class="rm">×</span>';
+      div.querySelector('.rm').addEventListener('click', function () {
+        pendingImages.splice(idx, 1);
+        renderPreviews();
+      });
+      imgPreviews.appendChild(div);
+    });
+    imgPreviews.className = pendingImages.length ? 'show' : '';
+  }
+
+  imgBtn.addEventListener('click', function () { fileInput.click(); });
+  fileInput.addEventListener('change', function () {
+    var files = Array.prototype.slice.call(fileInput.files);
+    fileInput.value = '';
+    files.forEach(function (f) {
+      if (pendingImages.length >= 4) return;
+      compress(f).then(function (dataURL) {
+        pendingImages.push(dataURL);
+        renderPreviews();
+      }).catch(function () { setStatus('图片处理失败'); });
+    });
+  });
+
+  sendBtn.addEventListener('click', function () {
+    var text = noteInput.value.trim();
+    if (!text && !pendingImages.length) return;
+    sendBtn.disabled = true;
+    setStatus('发送中…');
+    api('POST', { text: text, images: pendingImages.slice() }).then(function () {
+      noteInput.value = '';
+      noteInput.style.height = 'auto';
+      pendingImages = [];
+      renderPreviews();
+      setStatus('');
+      return refresh();
+    }).catch(function (e) {
+      setStatus('发送失败：' + e.message);
+    }).finally(function () {
+      sendBtn.disabled = false;
+    });
+  });
+
+  noteInput.addEventListener('input', function () {
+    noteInput.style.height = 'auto';
+    noteInput.style.height = Math.min(noteInput.scrollHeight, 120) + 'px';
+  });
+  noteInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey && window.innerWidth > 600) {
+      e.preventDefault();
+      sendBtn.click();
+    }
+  });
+
+  feed.addEventListener('click', function (e) {
+    if (e.target.tagName === 'IMG') {
+      viewerImg.src = e.target.src;
+      viewer.classList.add('show');
+    }
+  });
+  viewer.addEventListener('click', function () {
+    viewer.classList.remove('show');
+    viewerImg.src = '';
+  });
+
+  var saved = localStorage.getItem(ROOM_KEY);
+  if (saved) {
+    roomInput.value = saved;
+    enterBtn.click();
+  } else {
+    roomInput.focus();
+  }
+})();
+</script>
+{{- end -}}

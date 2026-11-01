@@ -1,0 +1,11 @@
+{{- $notice := .Site.Data.notice -}}
+{{- if and $notice $notice.enable -}}
+<div style="background: rgba(255,255,255,0.7); backdrop-filter: blur(4px); border-radius: 16px; padding: 16px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+  <strong>{{ $notice.title | default "📢 公告" }}</strong>
+  {{- range $item := $notice.items }}
+  <p style="margin: {{ if $item.date }}4px{{ else }}8px{{ end }} 0 0 0; font-size: {{ if $item.date }}0.9rem{{ else }}0.95rem{{ end }};{{ if $item.date }} opacity: 0.7;{{ end }}">
+    {{ $item.text }}{{ with $item.date }} {{ . }}{{ end }}
+  </p>
+  {{- end }}
+</div>
+{{- end -}}

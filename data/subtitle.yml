@@ -1,0 +1,19 @@
+# 首页副标题配置（打字机效果）
+text: "世界第一公主殿下..."
+typing:
+  enable: true
+  strings:
+    - "世界第一公主殿下"
+    - "欢迎来到红石的博客"
+    - "Ciallo~"
+    - "Believe you can and you’re halfway there."
+    - "一些特殊文章，例如题解默认不显示，需要选中下方的复选框"
+  typeSpeed: 100
+  backSpeed: 50
+  backDelay: 2000
+  startDelay: 300
+  loop: true
+  shuffle: true
+  showCursor: true
+  cursorChar: "|"
+  smartBackspace: false

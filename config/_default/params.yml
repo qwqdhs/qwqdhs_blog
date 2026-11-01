@@ -21,6 +21,9 @@ menu:
   - name: download
     url: "posts/download"
     icon: "f019"
+  - name: notes
+    url: "notes"
+    icon: "f24d"
   - name: hsv
     url: "hsv"
     icon: "f1fc"
@@ -36,23 +39,7 @@ email: qwqdhs@outlook.com
 description: "Believe you can and you’re halfway there."
 subtitle:
   typing:
-    enable: true
-    strings:
-      - "世界第一公主殿下"
-      - "欢迎来到红石的博客"
-      - "Ciallo~"
-      - "Believe you can and you’re halfway there."
-      - "评论区因为我没钱买子域名所以需要梯子才能上,so sorry"
-    typeSpeed: 100
-    backSpeed: 50
-    backDelay: 2000
-    startDelay: 300
-    loop: true
-    shuffle: true
-    showCursor: true
-    cursorChar: "|"
-    smartBackspace: false
-  text: "世界第一公主殿下..."
+    enable: false
 
 banner: "images/banner.webp"
 banner_srcset:
@@ -103,6 +90,7 @@ social:
   NSSCTF: https://www.nssctf.cn/user/54920
 
 widgets:
+  - special
   - category
   - tag
   - tagcloud
@@ -576,12 +564,7 @@ injector:
   body_end:
   injector:
   sidebar_begin: |
-    <div style="background: rgba(255,255,255,0.7); backdrop-filter: blur(4px); border-radius: 16px; padding: 16px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-      <strong>📢 公告</strong>
-      <p style="margin: 8px 0 0 0; font-size: 0.95rem;">本站正在建设中，欢迎提出建议～</p>
-      <p style="margin: 4px 0 0 0; font-size: 0.9rem; opacity: 0.7;">由于我没钱买子域名所以评论区需要梯子才能访问 公告发布于：2026-07-22</p>
-    </div>
-      <!-- 自定义社交 -->
+    <!-- 自定义社交 -->
     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
       <a href="https://www.luogu.com.cn/user/1328343" target="_blank" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none; color: #333; background: rgba(255,255,255,0.6); padding: 4px 12px; border-radius: 16px; font-size: 0.85rem;">
         <img src="/images/luogu.png" alt="洛谷" style="width: 20px; height: 20px; border-radius: 50%;">
