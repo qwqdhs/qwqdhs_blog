@@ -59,10 +59,27 @@
   .note-text { font-size: 0.95rem; line-height: 1.65; white-space: pre-wrap; word-break: break-word; }
   .note-imgs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 8px; }
   .note-imgs.single { grid-template-columns: 1fr; }
+  .note-img-item { position: relative; }
   .note-imgs img {
     width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px;
-    cursor: zoom-in; background: #eceff1;
+    cursor: zoom-in; background: #eceff1; display: block;
   }
+  .note-btn {
+    font-size: 0.72rem; color: #0288d1; background: rgba(2,136,209,0.07);
+    border: 1px solid rgba(2,136,209,0.2); border-radius: 8px;
+    padding: 3px 9px; cursor: pointer; transition: background .15s, color .15s;
+    font-family: inherit; line-height: 1.5;
+  }
+  .note-btn:hover { background: rgba(2,136,209,0.15); }
+  .note-btn.copied {
+    color: #2e7d32; border-color: rgba(46,125,50,0.35); background: rgba(46,125,50,0.1);
+  }
+  .note-actions { display: flex; justify-content: flex-end; margin-top: 8px; }
+  .img-dl {
+    position: absolute; right: 6px; bottom: 6px;
+    background: rgba(255,255,255,0.92); border-color: rgba(2,136,209,0.3);
+  }
+  .img-dl:hover { background: #fff; }
   #feed-empty { text-align: center; opacity: 0.45; font-size: 0.85rem; padding: 30px 0; }
 
   /* 发布栏 */
@@ -154,7 +171,7 @@
       fileInput = $('file-input'), imgPreviews = $('img-previews'),
       statusEl = $('status'), viewer = $('viewer'), viewerImg = $('viewer-img');
 
-  var room = '', pendingImages = [], pollTimer = null;
+  var room = '', pendingImages = [], pollTimer = null, currentNotes = [];
 
   function fmtTime(ts) {
     var d = new Date(ts), now = new Date();
@@ -182,6 +199,7 @@
   }
 
   function render(notes) {
+    currentNotes = notes;
     if (!notes.length) {
       feed.innerHTML = '<div id="feed-empty">还没有内容，写下第一条吧 ✍️</div>';
       return;
@@ -190,11 +208,17 @@
     for (var i = 0; i < notes.length; i++) {
       var n = notes[i];
       html += '<div class="note-card"><div class="note-time">' + fmtTime(n.time) + '</div>';
-      if (n.text) html += '<div class="note-text">' + esc(n.text) + '</div>';
+      if (n.text) {
+        html += '<div class="note-text">' + esc(n.text) + '</div>';
+        html += '<div class="note-actions"><button class="note-btn copy-btn" data-note="' + i + '">📋 复制文字</button></div>';
+      }
       if (n.images && n.images.length) {
         html += '<div class="note-imgs' + (n.images.length === 1 ? ' single' : '') + '">';
         for (var j = 0; j < n.images.length; j++) {
-          html += '<img src="' + n.images[j] + '" loading="lazy" alt="图片">';
+          html += '<div class="note-img-item">'
+                + '<img src="' + n.images[j] + '" loading="lazy" alt="图片">'
+                + '<button class="note-btn img-dl" data-note="' + i + '" data-img="' + j + '">⬇ 下载</button>'
+                + '</div>';
         }
         html += '</div>';
       }
@@ -341,9 +365,63 @@
     }
   });
 
+  function copyText(text, btn) {
+    function done() {
+      btn.textContent = '✓ 已复制';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = '📋 复制文字';
+        btn.classList.remove('copied');
+      }, 1500);
+    }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      if (ok) done();
+      else setStatus('复制失败，请手动选中文字复制');
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done).catch(fallback);
+    } else {
+      fallback();
+    }
+  }
+
+  function downloadImage(dataUrl, name) {
+    var a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setStatus('已开始下载');
+    setTimeout(function () { setStatus(''); }, 1500);
+  }
+
   feed.addEventListener('click', function (e) {
-    if (e.target.tagName === 'IMG') {
-      viewerImg.src = e.target.src;
+    var t = e.target;
+    if (t.classList.contains('copy-btn') || t.classList.contains('img-dl')) {
+      var note = currentNotes[+t.getAttribute('data-note')];
+      if (!note) return;
+      if (t.classList.contains('copy-btn')) {
+        copyText(note.text || '', t);
+      } else {
+        var idx = +t.getAttribute('data-img');
+        if (note.images && note.images[idx]) {
+          downloadImage(note.images[idx], 'note-' + note.id + '-' + (idx + 1) + '.jpg');
+        }
+      }
+      return;
+    }
+    if (t.tagName === 'IMG') {
+      viewerImg.src = t.src;
       viewer.classList.add('show');
     }
   });

@@ -21,6 +21,9 @@ menu:
   - name: download
     url: "posts/download"
     icon: "f019"
+  - name: changelog
+    url: "posts/changelog"
+    icon: "f1da"
   - name: notes
     url: "notes"
     icon: "f24d"
@@ -281,7 +284,7 @@ valine:
 
 waline:
   enable: enable
-  serverURL: "https://qwqdhs-blog-waline.vercel.app"
+  serverURL: "https://waline.qwqdhs.com"
   locale: {}
   emoji:
     - https://unpkg.com/@waline/emojis@1.2.0/weibo
@@ -565,7 +568,7 @@ injector:
   injector:
   sidebar_begin: |
     <!-- 自定义社交 -->
-    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 16px;">
       <a href="https://www.luogu.com.cn/user/1328343" target="_blank" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none; color: #333; background: rgba(255,255,255,0.6); padding: 4px 12px; border-radius: 16px; font-size: 0.85rem;">
         <img src="/images/luogu.png" alt="洛谷" style="width: 20px; height: 20px; border-radius: 50%;">
         洛谷

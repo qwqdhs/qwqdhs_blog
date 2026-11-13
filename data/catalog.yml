@@ -1,0 +1,39 @@
+sections:
+  - name: 教程
+    groups:
+      - name: C++
+        priority: 20
+        tags: ["C++"]
+      - name: Linux
+        priority: 10
+        tags: ["linux", "ubuntu"]
+      - name: CTF
+        priority: 20
+        tags: ["CTF"]
+      - name: NOI
+        priority: 15
+        tags: ["NOI"]
+
+  - name: 比赛 / 自用
+    groups:
+      - name: 职业院校技能大赛
+        priority: 30
+        tags: ["职业院校技能大赛"]
+      - name: 建图与导航
+        priority: 35
+        tags: ["建图", "Cartographer建图", "nav2", "自主导航", "路径规划"]
+
+  - name: 其他 / 杂谈
+    groups:
+      - name: 技术分享
+        priority: 8
+        tags: ["建站", "CloudFlare"]
+      - name: 题解
+        priority: 30
+        tags: ["题解"]
+      - name: 杂谈
+        priority: 5
+        tags: ["杂谈"]
+      - name: 其他
+        priority: 0
+        tags: ["其他", "下载", "自用", "更新日志", "目录"]
